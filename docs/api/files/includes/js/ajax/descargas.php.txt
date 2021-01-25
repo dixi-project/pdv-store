@@ -1,0 +1,223 @@
+<?php
+header('content-type: application/json; charset=utf-8');
+header("access-control-allow-origin: *");
+$cad=null;
+include 'configAjax.php';
+foreach ($_REQUEST as $key => $value) {
+    //echo $key . "--".$value."<br>";
+    $$key =  Security($value);
+}
+ 
+$sqlValidate ="SELECT *  FROM element WHERE id = {$idRe}";
+$recordset = $db->prepare($sqlValidate);
+$recordset->execute();
+$resp = $recordset->fetch(PDO::FETCH_OBJ);
+$Texto = $resp->element;
+$Desc = $resp->description;
+$Preg = $resp->pregunta;
+$Resp = $resp->respuesta;
+$Cons = $resp->atajo;
+
+$cad = '';
+if($idN>0){
+    if($idN==1){
+        $cad .= ' 
+            <label class="col-sm-2 control-label">Texto: </label>
+            <div class="col-sm-10">
+                <input type="hidden" id="txtType" name="txtType" value="1" >         
+                <input type="text" class="form-control" id="txtTexto" name="txtTexto" value="'.$Texto.'" required>                      
+            </div>
+        ';
+    }elseif($idN==2){
+        $cad .= ' 
+       
+            <label class="col-sm-2 control-label">Texto: </label>
+            <div class="col-sm-10">
+                <input type="hidden" id="txtType" name="txtType" value="2">         
+                <input type="text" class="form-control" id="txtTexto" name="txtTexto" value="'.$Texto.'" required>                      
+            </div>
+            <div class="row"><br><br><br></div>
+            <label class="col-sm-2 control-label">Descripción: </label>
+            <div class="col-sm-10">
+                <textarea class="form-control mceEditor" id="txtDesc" name="txtDesc" required>'.$Desc.'</textarea>                      
+            </div>
+            <div class="row"><br><br><br><br></div>
+            <label class="col-sm-2 control-label">Video: </label>
+            <div class="col-sm-10">
+                <input type="file" id="txtFile" name="txtFile">                      
+            </div>
+
+            
+             
+
+        ';
+    }elseif($idN==3){
+        $cad .= ' 
+            <label class="col-sm-2 control-label">Texto: </label>
+            <div class="col-sm-10">
+                <input type="hidden" id="txtType" name="txtType" value="3">         
+                <input type="text" class="form-control" id="txtTexto" name="txtTexto" value="'.$Texto.'" required>                      
+            </div>
+            <div class="row"><br><br><br></div>
+            <label class="col-sm-2 control-label">Descripción: </label>
+            <div class="col-sm-10">
+                <textarea class="form-control mceEditor" id="txtDesc" name="txtDesc" required>'.$Desc.'</textarea>                      
+            </div>
+            <div class="row"><br><br><br><br></div>
+            <label class="col-sm-2 control-label">Imagen: </label>
+            <div class="col-sm-10">
+                <input type="file" id="txtFile" name="txtFile">                      
+            </div>
+
+        ';
+    }elseif($idN==4){
+        $cad .= ' 
+            
+            <label class="col-sm-2 control-label">Descripción: </label>
+            <div class="col-sm-10">
+                <input type="hidden" id="txtType" name="txtType" value="4">  
+                <textarea class="form-control mceEditor" id="txtDesc" name="txtDesc" required>'.$Desc.'</textarea>                      
+            </div>
+            <div class="row"><br><br><br><br></div>
+            <label class="col-sm-2 control-label">Video: </label>
+            <div class="col-sm-10">
+                <input type="file" id="txtFile" name="txtFile">                      
+            </div>
+
+        ';
+    }elseif($idN==5){
+        $cad .= ' 
+            <label class="col-sm-2 control-label">Descripción: </label>
+            <div class="col-sm-10">
+                <input type="hidden" id="txtType" name="txtType" value="5"> 
+                <textarea class="form-control mceEditor" id="txtDesc" name="txtDesc" required>'.$Desc.'</textarea>                      
+            </div>
+            <div class="row"><br><br><br><br></div>
+            <label class="col-sm-2 control-label">Imagen: </label>
+            <div class="col-sm-10">
+                <input type="file" id="txtFile" name="txtFile">                      
+            </div>
+
+        ';
+    }elseif($idN==6){
+        $cad .= ' 
+            <label class="col-sm-2 control-label">Texto: </label>
+            <div class="col-sm-10">
+                <input type="hidden" id="txtType" name="txtType" value="6">         
+                <input type="text" class="form-control" id="txtTexto" name="txtTexto" value="'.$Texto.'" required>                      
+            </div>
+            
+            <div class="row"><br><br><br></div>
+            <label class="col-sm-2 control-label">Video: </label>
+            <div class="col-sm-10">
+                <input type="file" id="txtFile" name="txtFile">                      
+            </div>
+
+            
+            
+
+        ';
+    }elseif($idN==7){
+        $cad .= ' 
+            <label class="col-sm-2 control-label">Texto: </label>
+            <div class="col-sm-10">
+                <input type="hidden" id="txtType" name="txtType" value="7">         
+                <input type="text" class="form-control" id="txtTexto" name="txtTexto" value="'.$Texto.'" required>                      
+            </div>
+            
+            <div class="row"><br><br><br></div>
+            <label class="col-sm-2 control-label">Imagen: </label>
+            <div class="col-sm-10">
+                <input type="file" id="txtFile" name="txtFile">                      
+            </div>
+
+        ';
+    }elseif($idN==8){
+        $cad .= ' 
+            <label class="col-sm-2 control-label">Audio: </label>
+            <div class="col-sm-10">
+                <input type="hidden" id="txtType" name="txtType" value="8">   
+                <input type="file" id="txtFile" name="txtFile">                      
+            </div>
+
+        ';
+    }elseif($idN==9){
+        $cad .= ' 
+            <label class="col-sm-2 control-label">Texto: </label>
+            <div class="col-sm-10">
+                <input type="hidden" id="txtType" name="txtType" value="9">         
+                <input type="text" class="form-control" id="txtTexto" name="txtTexto" value="'.$Texto.'" required>                      
+            </div>
+            
+            <div class="row"><br><br><br></div>
+            <label class="col-sm-2 control-label">Audio: </label>
+            <div class="col-sm-10">
+                <input type="file" id="txtFile" name="txtFile">                      
+            </div>
+
+        ';
+    }elseif($idN==10){
+        $cad .= ' 
+            <label class="col-sm-2 control-label">Pregunta: </label>
+            <div class="col-sm-10">
+                <input type="hidden" id="txtType" name="txtType" value="10">
+                <textarea class="form-control mceEditor" id="txtPregunta" name="txtPregunta" required>'.$Preg.'</textarea>                     
+            </div>
+            <div class="row"><br><br><br></div>
+            <label class="col-sm-2 control-label">Respuesta: </label>
+            <div class="col-sm-10">     
+                <textarea class="form-control mceEditor" id="txtRespuesta" name="txtRespuesta" required>'.$Resp.'</textarea>                  
+            </div>
+            <div class="row"><br><br><br></div>
+            <label class="col-sm-2 control-label">Atajo: </label>
+            <div class="col-sm-10">     
+                <textarea class="form-control mceEditor" id="txtAtajo" name="txtAtajo" required>'.$Cons.'</textarea>                  
+            </div>
+
+        ';
+    }elseif($idN==12){
+        $cad .= '
+            <label class="col-sm-2 control-label">Imagen: </label>
+            <div class="col-sm-10">
+                <input type="hidden" id="txtType" name="txtType" value="12">         
+                <input type="file" id="txtFile" name="txtFile">                      
+            </div>
+
+        ';
+    }elseif($idN==13){
+        $cad .= ' 
+            <label class="col-sm-2 control-label">Video: </label>
+            <div class="col-sm-10">
+                <input type="hidden" id="txtType" name="txtType" value="13">  
+                <input type="file" id="txtFile" name="txtFile">                      
+            </div>
+        ';
+    }
+}
+$cad .= '<script type="text/javascript" language="javascript" src="//tinymce.cachefly.net/4.2/tinymce.min.js"></script>
+<script type="text/javascript">
+
+    tinymce.init({
+        selector: "textarea.mceEditor",
+        theme: "modern",
+        
+        plugins: [
+            "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+            "searchreplace wordcount visualblocks visualchars code fullscreen",
+            "insertdatetime media nonbreaking save table contextmenu directionality",
+            "emoticons template paste textcolor colorpicker textpattern imagetools"
+        ],
+        toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+        toolbar2: "print preview media | forecolor backcolor emoticons ",
+        image_advtab: true,
+
+
+        templates: [
+            {title: "Test template 1", content: "Test 1"},
+            {title: "Test template 2", content: "Test 2"}
+        ]
+    });
+
+    </script>';
+echo $cad;
+?>

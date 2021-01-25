@@ -1,0 +1,55 @@
+<?php
+ini_set('display_errors',0);
+error_reporting(E_ALL);
+class ControllerAsignarcondiciones extends Controller {
+    function __construct($view, $conf, $var, $acc) {
+        parent::__construct($view, $conf, $var, $acc);
+    } 
+    public function main() {
+    	foreach ($this->var as $key => $value) {
+            $this->data[$key] = $value;
+            $$key = $value;
+            //echo $key."-".$value."<br>";
+        }
+
+        //exit();
+        // --> Nuevo registro
+        if(isset($txtCondiciones_campana)){ 
+            /*
+            echo $txtCondiciones_campana."<br>";
+            echo $txtCampo."<br>";
+            echo $txtCondicion_id."<br>";
+            echo $txtValor1."<br>";
+            echo $idReg."<br>";
+            */
+            $datoss["Dominio"]="condiciones_campana";
+            $datoss["txtcondiciones_campana"]=$txtCondiciones_campana;
+            $datoss["txtcampo_id"]=$txtCampo;
+            $datoss["txtcondicion_id"]=$txtCondicion_id;
+            $datoss["txtvalor1"]=$txtValor1;
+            $datoss["txtvalor2"]=$txtValor2;
+            $datoss["txtcampana_id"]=$idReg;
+            if($ch1==100){
+                $datoss["txtcampo_id1"]=$txtCampo2;
+            }
+            $res = indexModel::bd($this->conf)->updateDominio($datoss);
+        }
+        // --> Eliminar registro de condición
+        if(isset($Action) && $Action == "delete" && $idReg2 != ""){ 
+            $res =  indexModel::bd($this->conf)->deleteDominio("condiciones_campana",$idReg2);
+        }
+
+        $this->data["condiciones"] = indexModel::bd($this->conf)->getDominio("condicion");
+        $cc = "SELECT * FROM campo WHERE campana_id=".$idReg;
+        //echo $cc;
+        $this->data["campos"] = indexModel::bd($this->conf)->getSQL($cc); 
+        $cond = array( 
+            "campana_id"=>$idReg
+        );
+        $this->data["allCondiciones"] = indexModel::bd($this->conf)->getDominioID("condiciones_campana",$cond);
+        //var_dump($this->data["allCondiciones"]);
+        //$this->view->show("index.html", $this->data, $this->accion); 
+        $this->view->show("asignar.html", $this->data, $this->accion); 
+    }
+}
+?>

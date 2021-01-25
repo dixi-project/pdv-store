@@ -1,0 +1,54 @@
+<?php
+header('content-type: application/json; charset=utf-8');
+header("access-control-allow-origin: *");
+$cad=null;
+include 'configAjax.php';
+foreach ($_REQUEST as $key => $value) {
+    //echo $key . "--".$value."<br>";
+    $$key =  Security($value);
+}
+try { 
+    $sqlValidate = "SELECT * FROM tipo_elemento WHERE tema LIKE '%{$idN}%'";
+    //echo $sqlValidate;
+    $recordset = $db->prepare($sqlValidate);
+    $recordset->execute();
+    $tipos="";
+    while($resp = $recordset->fetch(PDO::FETCH_OBJ)){
+        if($t == $resp->id){
+            $tipos .= '<option value="'.$resp->id.'" selected>'.$resp->tipo_elemento.'</option>';
+        }else{
+            $tipos .= '<option value="'.$resp->id.'">'.$resp->tipo_elemento.'</option>';
+        }
+            
+    }
+
+} catch (PDOException $e) {
+    //echo $e->getMessage() . "--" . $e->getCode();
+}
+if($idN>0){
+    $cad = ' 
+    <select id="txtTipoServicio" name="txtTipoServicio" class="form-control form-control">
+        <option value="0">Selecciona una opción</option>
+        '.$tipos.'
+    </select> 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>             
+    <script>
+        $(document).ready(function () {
+            $("#txtTipoServicio").change(function () {
+                var id = $(this).val();
+                var data = "idN="+id;
+                var html = $.ajax({
+                        url: "includes/js/ajax/descargas.php",
+                        type: "POST",
+                        data: data,
+                        async: false
+                }).responseText;
+                $("#capaDescarga").html(html); 
+            });
+        });   
+    </script>  
+
+    ';
+}
+echo $cad;
+?>

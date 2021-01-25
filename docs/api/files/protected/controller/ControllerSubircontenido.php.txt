@@ -1,0 +1,162 @@
+<?php
+class ControllerSubircontenido extends Controller {
+    function __construct($view, $conf, $var, $acc) {
+        parent::__construct($view, $conf, $var, $acc);
+    }  
+    public function main(){
+        foreach ($this->var as $key => $value) {
+            $this->data[$key] = $value;
+            $$key = $value;
+        }
+        $eddirar=0;  
+        // --> Editar
+        if(isset($idReg) && $idReg > 0 && $Action != "edit"){
+
+            $file_name="";
+            if($_FILES["txtFile"]["name"]) $file_name = $_FILES["txtFile"]["name"];
+            $actualizar["Dominio"]="element";
+            $actualizar["txtcourses_id"]=$txtCurso;
+            $actualizar["txtlessons_id"]=$txtLeccion;
+            $actualizar["txttopic_id"]=$txtTema;
+            $actualizar["txttipo_elemento_id"]=$txtTipoServicio;
+            $actualizar["txtelement"]=$txtTexto;
+            $actualizar["txtdescription"]=$txtDesc;
+            $actualizar["txtname_file"]=$file_name;
+            $actualizar["txtpregunta"]=$txtPregunta;
+            $actualizar["txtrespuesta"]=$txtRespuesta;
+            $actualizar["txtatajo"]=$txtAtajo;
+            $this->data["AddReg"]=1;
+            //var_dump($actualizar);
+            $idReg = indexModel::bd($this->conf)->updateDominio($actualizar,$idReg);
+            if (isset($_FILES["txtFile"])) {
+                $estructura = $this->config["pathCMSSite"]."includes/files/";
+                //echo $estructura;
+                if (!file_exists($estructura)) {
+                    if (!mkdir($estructura, 0777, true)) {
+                        die('Fallo al crear las carpetas...');
+                    }
+                }
+                $ext =explode(".", $file_name);
+                $add = $estructura . "/".$idReg.".".strtolower($ext[1]);
+                if (move_uploaded_file($_FILES["txtFile"]["tmp_name"], $add)) {
+                    $ex =  strtolower($ext[1]);
+                    if($ex != "jpg") @unlink($estructura."$idReg.jpg");
+                    if($ex != "jpeg") @unlink($estructura."$idReg.jpeg");
+                    if($ex != "png") @unlink($estructura."$idReg.png");
+                    if($ex != "gif") @unlink($estructura."$idReg.gif");
+                    if($ex != "pdf") @unlink($estructura."$idReg.pdf");
+                    if($ex != "doc") @unlink($estructura."$idReg.doc");
+                    if($ex != "xsl") @unlink($estructura."$idReg.xsl");
+                    if($ex != "ppt") @unlink($estructura."$idReg.ppt");
+                    if($ex != "ogg") @unlink($estructura."$idReg.ogg");
+                    if($ex != "mp4") @unlink($estructura."$idReg.mp4");
+                    if($ex != "mp3") @unlink($estructura."$idReg.mp3");
+                    if($ex != "m4a") @unlink($estructura."$idReg.m4a");
+                    if($ex != "webm") @unlink($estructura."$idReg.webm");
+                } else {
+                    //echo "ERROR";
+                }  
+            }
+            $eddirar=1;
+        // --> ALTA NUEVA
+        }elseif(isset($this->data["txtType"]) && $this->data["txtType"]>0 && $idReg == ""){
+            //var_dump($this->data);
+            //echo "ALTA";
+            //exit();
+            $file_name=""; 
+            if($_FILES["txtFile"]["name"]) $file_name = $_FILES["txtFile"]["name"];
+            $actualizar["Dominio"]="element";
+            $actualizar["txtcourses_id"]=$txtCurso;
+            $actualizar["txtlessons_id"]=$txtLeccion;
+            $actualizar["txttopic_id"]=$txtTema;
+            $actualizar["txttipo_elemento_id"]=$txtTipoServicio;
+            $actualizar["txtelement"]=$txtTexto;
+            $actualizar["txtdescription"]=$txtDesc;
+            $actualizar["txtname_file"]=$file_name;
+            $actualizar["txtpregunta"]=$txtPregunta;
+            $actualizar["txtrespuesta"]=$txtRespuesta;
+            $actualizar["txtatajo"]=$txtAtajo;
+            $this->data["AddReg"]=1;
+            //var_dump($actualizar);
+            $idReg = indexModel::bd($this->conf)->updateDominio($actualizar);
+            if (isset($_FILES["txtFile"])) {
+                $estructura = $this->config["pathCMSSite"]."includes/files/";
+                //echo $estructura;
+                if (!file_exists($estructura)) {
+                    if (!mkdir($estructura, 0777, true)) {
+                        die('Fallo al crear las carpetas...');
+                    }
+                }
+                $ext =explode(".", $file_name);
+                $add = $estructura . "/".$idReg.".".strtolower($ext[1]);
+                if (move_uploaded_file($_FILES["txtFile"]["tmp_name"], $add)) {
+                    $ex =  strtolower($ext[1]);
+                    if($ex != "jpg") @unlink($estructura."$idReg.jpg");
+                    if($ex != "jpeg") @unlink($estructura."$idReg.jpeg");
+                    if($ex != "png") @unlink($estructura."$idReg.png");
+                    if($ex != "gif") @unlink($estructura."$idReg.gif");
+                    if($ex != "pdf") @unlink($estructura."$idReg.pdf");
+                    if($ex != "doc") @unlink($estructura."$idReg.doc");
+                    if($ex != "xsl") @unlink($estructura."$idReg.xsl");
+                    if($ex != "ppt") @unlink($estructura."$idReg.ppt");
+                    if($ex != "ogg") @unlink($estructura."$idReg.ogg");
+                    if($ex != "mp4") @unlink($estructura."$idReg.mp4");
+                    if($ex != "mp3") @unlink($estructura."$idReg.mp3");
+                } else {
+                    //echo "ERROR";
+                }  
+            }
+
+
+        } 
+        // --> Elminar
+        //indexModel::bd($this->conf)->controlAcceso(["1"]);
+        $this->data["curso"] = indexModel::bd($this->conf)->getSQL("SELECT *  FROM  wp_y147tsazb2_posts  WHERE  post_type =  'sfwd-courses' AND post_status='publish' ");
+        foreach ($this->data["curso"] as $key):
+            $tArray = array();
+            foreach ($key as $a => $b):
+                $tArray [$a] = utf8_encode($b);
+            endforeach; 
+            $articles1[] = $tArray;
+        endforeach;
+        $this->data["curso"] = $articles1;
+        asort($this->data["curso"]);
+        // Editar
+        //echo "Action:".$Action."<br>";
+
+        if($Action=="edit"){
+            $ss="SELECT *  FROM  element  WHERE  id={$idReg}";
+            $this->data["cursoEdit"] = indexModel::bd($this->conf)->getSQL($ss)[0];
+            //echo $ss;
+            //echo $this->data["cursoEdit"]->topic_id;
+            $this->data["idReg"] = $idReg;
+            $this->data["Course"] = $this->data["cursoEdit"]->courses_id;
+            $this->data["Lession"] = $this->data["cursoEdit"]->lessons_id;
+            $this->data["Topic"] = $this->data["cursoEdit"]->topic_id;
+        }
+
+        
+        //$this->data["tipo"] = indexModel::bd($this->conf)->getDominio("tipo_elemento");
+        //asort($this->data["tipo"]);
+        if($eddirar==1){
+            $data["isCorrect"] = TRUE;
+            $data["tituloMensaje"] = "Exito!";
+            $data["Mensaje"] = "Registo guardado de forma correcta.";
+            $data["return"] = $this->var["path"]."catalogo/element";
+            $data["tiempo"] = "3";
+
+            $data["return"]=indexModel::bd($this->conf)->getMensaje($data);
+            $templa  = "mensajeBackEnd.html";
+            $this->view->show($templa, $data, $this->accion); 
+        }else{
+            $this->view->show("subircontenido.html", $this->data, $this->accion); 
+        }
+        
+
+
+
+
+
+    }
+}
+?>

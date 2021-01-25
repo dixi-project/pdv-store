@@ -1,0 +1,35 @@
+<?php
+class ControllerSendwhatsapp extends Controller {
+    function __construct($view, $conf, $var, $acc) {
+        parent::__construct($view, $conf, $var, $acc);
+    } 
+    public function main() {
+
+    	$inputJSON = file_get_contents('php://input');
+		$data_string = json_decode( $inputJSON );
+		//$data_string = json_encode($inputJSON); //convert JSON into array
+		//var_dump($data_string); 
+		$result=null;
+		foreach ($data_string as $key => $value) {
+			//$data = array("phone" => "5215515051251", "body" => "WhatsApp API on chat-api.com works good");
+			$data_string2 = json_encode($value); 
+			//var_dump($value);  
+			
+			$ch = curl_init('https://eu1.whatsapp.chat-api.com/instance758/message?token=inuybdo3lzboenrz');
+
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");  
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string2); 
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json' ));        
+			$result = curl_exec($ch);
+			//var_dump($result);
+			//url_close($ch);  
+			$cc[]=json_decode($result);
+		} 
+		echo json_encode($cc,true); 
+    }
+}
+?>
+
+
+

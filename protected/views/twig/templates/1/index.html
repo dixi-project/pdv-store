@@ -1,0 +1,220 @@
+{% include 'includesHome/header.html' %}
+
+  <body class="body-alt">
+    <link
+      href="http://fonts.googleapis.com/css?family=Droid+Sans"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <div id="loading">
+      <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+    </div>
+
+    <div id="page-wrapper">
+      <div
+        class="main-header header-fixed font-inverse header-opacity header-resizable wow bounceInDown"
+        data-0="padding: 35px 0; background: rgba(255,255,255,0.1);"
+        data-250="padding: 0px 0; background: rgba(0,0,0,1)"
+      >
+        <div class="container">
+          <a
+            href="index.html"
+            class="header-logo"
+            title="Monarch - Create perfect presentation websites"
+          ></a
+          ><!-- .header-logo -->
+          <div class="right-header-btn">
+            <div id="mobile-navigation">
+              <button
+                id="nav-toggle"
+                class="collapsed"
+                data-toggle="collapse"
+                data-target=".header-nav"
+              >
+                <span></span>
+              </button>
+            </div>
+            <!--
+        <div class="search-btn">
+            <a href="#" class="popover-button" title="Search" data-placement="bottom" data-id="#popover-search">
+                <i class="glyph-icon icon-search"></i>
+            </a>
+            
+            <div class="hide" id="popover-search">
+                <div class="pad5A box-md">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search terms here ...">
+                        <span class="input-group-btn">
+                            <a class="btn btn-primary" href="#">Search</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+        -->
+          </div>
+          <!-- .header-logo -->
+          <ul class="header-nav collapse">
+            <li>
+              <a href="{{ pathSite }}" title="Homepages"> Home </a>
+            </li>
+          </ul>
+          <!-- .header-nav -->
+        </div>
+        <!-- .container -->
+      </div>
+      <!-- .main-header -->
+
+      <!-- Fullpage.js -->
+
+      <script
+        type="text/javascript"
+        src="{{ pathSite }}design/{{ design }}/assets/widgets/fullpage/fullpage.js"
+      ></script>
+
+      <script type="text/javascript">
+        $(document).ready(function () {
+          $("#fullpage").fullpage({
+            anchors: ["firstPage"],
+            autoScrolling: false,
+            css3: true,
+          });
+        });
+      </script>
+
+      <div id="fullpage">
+        <div class="section bg-gradient-9" id="section0">
+          <div class="slide">
+            <div class="center-vertical">
+              <div class="center-content">
+                <div class="container">
+                  <div class="hero-box font-inverse">
+                    <h2
+                      class="hero-heading wow fadeInDown"
+                      data-wow-duration="0.6s"
+                    >
+                      Not Framework Dixi-Project InHouse
+                    </h2>
+                    <p
+                      class="pad25T mrg25B hero-text wow bounceInUp"
+                      data-wow-duration="0.9s"
+                      data-wow-delay="0.2s"
+                    >
+                      Tool that allows you to create a system based on the
+                      relational data structure<br />Download configure your
+                      system, design your database and voila, you have a system
+                      ready to operate.
+                    </p>
+                    <div class="pad25T">
+                      <a
+                        href="https://bitbucket.org/dixiprojectmexico/not-framework-dixi/src/master/"
+                        target="_blank"
+                      >
+                        <button
+                          class="mrg5R btn btn-alt btn-hover btn-lg btn-outline-inverse remove-bg"
+                        >
+                          <span>Download</span>
+                          <i class="glyph-icon icon-download"></i>
+                        </button>
+                      </a>
+                      <button
+                        class="btn btn-alt btn-hover btn-lg btn-outline-inverse remove-bg"
+                      >
+                        <span>Documentation</span>
+                        <i class="glyph-icon icon-file"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="scroller-icon">
+              <div class="glyph-icon icon-angle-down font-white"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-footer bg-gradient-9 clearfix">
+        <div class="container clearfix">
+          <div class="col-md-3 pad25R">
+            <div class="header">About us</div>
+            <p class="about-us">
+              Company dedicated to generating customized solutions for web and
+              mobile systems
+            </p>
+            <div class="divider"></div>
+          </div>
+          <div class="col-md-4">
+            <h3 class="header">Updates</h3>
+            <div class="posts-list">
+              <!--
+                <ul>
+                    <li>
+                        <div class="post-image">
+                            <a href="{{ pathSite }}design/{{ design }}/assets/image-resources/stock-images/img-10.jpg" class="prettyphoto" rel="prettyPhoto[pp_gal]" title="Blog post title">
+                                <img class="img-responsive" src="{{ pathSite }}design/{{ design }}/assets/image-resources/stock-images/img-10.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="post-body">
+                            <a class="post-title" href="blog-single.html" title="">
+                                <h3>When our power of choice is untrammelled prevents</h3>
+                            </a>
+                            by <a href="#">Hector Tomales</a> on 16.04.2015
+                        </div>
+                    </li>
+                  
+                </ul>
+            --></div>
+          </div>
+          <div class="col-md-2">
+            <h3 class="header">Components</h3>
+            <ul class="footer-nav">
+              <!--
+                    <li><a href="hero-static.html" title="Static hero sections"><span>Static sections</span></a></li>
+                -->
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h3 class="header">Contact</h3>
+            <ul class="footer-contact">
+              <li>
+                <i class="glyph-icon icon-home"></i>
+                Ixtapaluca, cp 56570 Estado de México, México
+              </li>
+              <li>
+                <i class="glyph-icon icon-phone"></i>
+                55-1505-1251
+              </li>
+              <li>
+                <i class="glyph-icon icon-envelope-o"></i>
+                <a href="#" title="">acastillejos@dixi-project.com</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-pane">
+          <div class="container clearfix">
+            <div class="logo">
+              &copy; {{year}} Dixi Project. All Rights Reserved.
+            </div>
+            <div class="footer-nav-bottom">
+              <!--
+                    <a href="#" title="Portfolio">Widgets</a>
+                -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% include 'includesHome/footerJS.html' %}
+
+  </body>
+</html>

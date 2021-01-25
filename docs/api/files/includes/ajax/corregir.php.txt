@@ -1,0 +1,53 @@
+<?php
+ini_set('display_errors',1); 
+error_reporting(E_ALL); 
+header('content-type: application/json; charset=utf-8');
+header("access-control-allow-origin: *");
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
+$cad=null;
+include 'configAjax.php';
+//include '../../framework/catalogos/catalogos.php';
+foreach ($_REQUEST as $key => $value) {
+    //echo $key . "--".$value."<br>";
+    $$key =  Security($value);
+}
+
+$sqlValidate = "UPDATE campana SET status_envio_id = 2"; 
+echo $sqlValidate."<br>\n";
+$recordset = $db->prepare($sqlValidate);
+$x=$recordset->execute();
+var_dump($x);
+echo "----------------------------------------------------";
+exit();
+
+
+
+$sqlValidate  ="SELECT * FROM campana WHERE status_envio_id = 1";
+$recordset = $db->prepare($sqlValidate);
+$recordset->execute();
+while($resp = $recordset->fetch(PDO::FETCH_OBJ)){
+	var_dump($resp);
+}
+exit();
+
+
+$sqlValidate  ="SELECT * FROM send WHERE enviado = 0 LIMIT 5";
+$recordset = $db->prepare($sqlValidate);
+$recordset->execute();
+while($resp = $recordset->fetch(PDO::FETCH_OBJ)){
+    //echo utf8_encode($resp->estado)."<br>";
+    //$es = utf8_encode($resp->municipio);
+    $data = array("phone" => $resp->telefono, "body" => $resp->mensaje);
+	$data_string = json_encode($data);   
+	$ch = curl_init('https://eu1.whatsapp.chat-api.com/instance758/message?token=inuybdo3lzboenrz');
+	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");  
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string); 
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                     
+	    'Content-Type: application/json' ));        
+	$result = curl_exec($ch);
+    $recordset2 = $db->prepare("UPDATE send SET enviado=1 WHERE id = ".$resp->id);
+    $recordset2->execute(); 
+    
+}
+?>

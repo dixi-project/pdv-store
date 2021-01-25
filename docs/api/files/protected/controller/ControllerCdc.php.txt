@@ -1,0 +1,45 @@
+<?php
+class ControllerCdc extends Controller {
+    function __construct($view, $conf, $var, $acc) {
+        parent::__construct($view, $conf, $var, $acc);
+    } 
+    public function main() {
+    	foreach ($this->var as $key => $value) {
+            $this->data[$key] = $value;
+            $$key = $value;
+        }
+        if(isset($idRegA) && $idRegA>0 && $Action=="delete"){
+            $idGrupo=$idRegA;
+            // --> Borrar relacion con empresa y usuario en CASCADA
+            indexModel::bd($this->conf)->deleteDominio("objetivos", $idRegA);
+        }
+
+        $dd=explode("/",$this->data["con"]);
+        $idcentro = $dd[1];
+        $this->data["idcentro"] = $idcentro;
+        if(isset($txtMision)){
+            //var_dump($this->data);
+            $datoss=array(
+                "Dominio"=>"objetivos",  
+                "txtcentro_de_consumo_id"=>$idcentro,
+                "txtstatus_objetivo_id"=>2,
+                "txtmarca_id"=>$txtMarca,
+                "txtmision"=>$txtMision, 
+                "txtincentivo"=>$txtIncentivo,
+                "txtduracion"=>$txtDuracion
+            );
+            //var_dump($datoss);
+            $idUser = indexModel::bd($this->conf)->updateDominio($datoss);
+        }
+        indexModel::bd($this->conf)->controlAcceso(["1","2"]);
+        $datta=array(
+            "centro_de_consumo_id"=>$idcentro
+        );
+        $this->data["centro"] = indexModel::bd($this->conf)->getDominio("centro_de_consumo",$idcentro)[0];
+        $this->data["marca"] = indexModel::bd($this->conf)->getDominio("marca");
+        $this->data["objetivos"] = indexModel::bd($this->conf)->getDominioID("objetivos",$datta);
+        //var_dump($this->data["objetivos"]);
+        $this->view->show("cdc.html", $this->data, $this->accion);  
+    }
+}
+?>

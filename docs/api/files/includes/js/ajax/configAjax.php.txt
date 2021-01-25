@@ -1,0 +1,16 @@
+<?php
+ini_set('display_errors',0);
+error_reporting(E_ALL); 
+header("access-control-allow-origin: *");
+$config='../../../protected/config/data.php';
+$conf = require($config);
+require '../../../'.$conf['folderModelos'].'SPDO.php';
+$db = SPDO::singleton($conf['host'],$conf['dbname'],$conf['username'],$conf['password']);
+$pathSitioCMS = $conf['pathCMSSite'];
+function Security($_Cadena) {
+    $_Cadena = htmlspecialchars(trim(addslashes(stripslashes(strip_tags($_Cadena)))));
+    $_Cadena = str_replace(chr(160),'',$_Cadena);
+    return $_Cadena;
+    //return mysql_real_escape_string($_Cadena);
+}
+?>

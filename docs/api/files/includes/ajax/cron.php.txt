@@ -1,0 +1,140 @@
+<?php
+ini_set('display_errors',0); 
+error_reporting(E_ALL); 
+date_default_timezone_set("America/Mexico_City");
+// --> Alta de elastick
+use Elasticsearch\ClientBuilder;
+//require 'vendor/autoload.php';
+require __DIR__.'/../../vendor/autoload.php';
+$hosts1 = [
+    '172.17.0.3:9200',         // IP + Port
+    '172.17.0.3',              // Just IP
+    '172.17.0.3:9201', // Domain + Port
+    '172.17.0.3',     // Just Domain
+    'https://172.17.0.3',        // SSL to localhost
+    'https://172.17.0.3:9200'  // SSL to IP + Portx
+];
+$cad=null;
+$config='/home/insights/projects/whatsapp/protected/config/data.php';
+$conf = require($config);
+require '/home/insights/projects/whatsapp/'.$conf['folderModelos'].'SPDO.php';
+$db = SPDO::singleton($conf['host'],$conf['dbname'],$conf['username'],$conf['password']);
+$pathSitioCMS = $conf['pathCMSSite'];
+//var_dump($client);
+$sqlValidate="SELECT * FROM campana WHERE status_envio_id = 1";
+$recordset = $db->prepare($sqlValidate);
+$recordset->execute();
+while($campana = $recordset->fetch(PDO::FETCH_OBJ)){
+	$idReg2 = $campana->id;
+    // --> Obtener Campaña
+    // $campana = indexModel::bd($this->conf)->getDominio("campana",$idReg2)[0];
+    // --> Obtener Campos Subidos
+    $recordset3 = $db->prepare("SELECT * FROM campo WHERE campana_id=".$idReg2);
+	$recordset3->execute();
+	$campos = $recordset3->fetchAll(PDO::FETCH_OBJ);
+    //$campos = indexModel::bd($this->conf)->getSQL("SELECT * FROM campo WHERE campana_id=".$idReg2);
+    //var_dump($campos);
+    //exit();
+    // --> Condiciones
+    //$condiciones = indexModel::bd($this->conf)->getDominio("condicion");
+    $recordset2 = $db->prepare("SELECT * FROM condicion");
+	$recordset2->execute();
+	while($condiciones = $recordset2->fetch(PDO::FETCH_OBJ)){
+        //var_dump($condiciones);
+        $idCond = $condiciones->id;
+        $condicion[$idCond]=$condiciones->condicion;
+    }
+    // --> Obtener condiciones 
+    $recordset3 = $db->prepare("SELECT * FROM condiciones_campana  WHERE campana_id = ". $idReg2);
+	$recordset3->execute();
+	$wheres="";
+	while($condi = $recordset3->fetch(PDO::FETCH_OBJ)){
+        //--> GET Field
+        foreach ($campos as $key1 => $value1) {
+            if($value1->id == $condi->campo_id){
+                $campo = $key1;
+                break;
+            }
+        }
+        $idC = $condi->condicion_id;// --> Id de la condición
+        $valor1 = $condi->valor1;// --> VALOR 1
+        $valor2 = $condi->valor2; // --> VALOR 1
+        // --> VALOR 3  
+        //echo "--> # Con:".$idC." --NAMCON: ".$condicion[$idC]."--".$valor1."--".$valor2."--".$campos[$campo]->campo."<br>";
+        if($idC==1){
+            $wheres .= $campos[$campo]->campo." = {$valor1} AND";
+        }elseif($idC==2){
+            $wheres .= $campos[$campo]->campo." > {$valor1} AND";
+        }elseif($idC==3){
+            $wheres .= $campos[$campo]->campo." >= {$valor1} AND";
+        }elseif($idC==4){
+            $wheres .= $campos[$campo]->campo." < {$valor1} AND";
+        }elseif($idC==5){
+            $wheres .= $campos[$campo]->campo." <= {$valor1} AND";
+        }elseif($idC==6){
+            $wheres .= $campos[$campo]->campo." != {$valor1} AND";
+        }elseif($idC==7){
+            $wheres .= $campos[$campo]->campo." BETWEEN '{$valor1}' AND '{$valor2}' AND";
+        }elseif($idC==8){
+            $wheres .= $campos[$campo]->campo." LIKE '{$valor1}%' AND";
+        }elseif($idC==9){
+            $wheres .= $campos[$campo]->campo." LIKE '%{$valor1}' AND";
+        }elseif($idC==10){
+            $wheres .= $campos[$campo]->campo." LIKE '%{$valor1}%' AND";
+        }    
+    }
+    $sqlValidate1="SELECT * FROM send WHERE {$wheres} campana_id = ".$idReg2;
+    //$sqlValidate1="SELECT * FROM send WHERE cantidad > 0 ";
+    //echo $sqlValidate1."\n";
+    $recordset1 = $db->prepare($sqlValidate1);
+	$recordset1->execute();
+	while($resp1 = $recordset1->fetch(PDO::FETCH_OBJ)){
+        //var_dump($resp1);
+	    $date = new DateTime(date("Y-m-d H:i:s"));
+
+        $mensaje = str_replace("_fec", $resp1->fecha_limite, $resp1->mensaje);
+        $mensaje = str_replace("_can", $resp1->cantidad, $mensaje);
+
+	    $params = [
+        	'index' => 'whatsapp-send',
+        	'type' => 'send',
+        	'body' => ['nombre' => $resp1->nombre , 'telefono' => $resp1->telefono , 'timestamp' => $date->getTimestamp(), 'mensaje' => $mensaje  ,'fecha' => $resp1->fecha, 'campana_name' => $campana->campana , 'campana_id' => $campana->id,'enviado' => '0'] 
+    	]; 
+
+        //var_dump($params); 
+
+        //exit();
+        try{  
+            $sqlValidate13="UPDATE send SET enviado = 1 WHERE id = ".$resp1->id;
+            //echo $sqlValidate13."\n";
+            $recordset13 = $db->prepare($sqlValidate13);
+            $r = $recordset13->execute();              $clientBuilder = ClientBuilder::create();   // Instantiate a new ClientBuilder
+            $clientBuilder->setHosts($hosts1);           // Set the hosts
+            $client = $clientBuilder->build();          // Build the client object
+            if ($client) {
+                    //echo "Connected Elasticsearch \n";
+            } 
+            $resp = $client->index($params);
+            //var_dump($resp);
+        } catch (Elasticsearch\Common\Exceptions\Curl\CouldNotConnectToHost $e) {
+            echo "Error";
+        }   
+	}
+    $sqlV="SELECT COUNT(*) AS nr FROM send WHERE {$wheres} enviado = 0 AND campana_id = ".$idReg2;
+    //echo $sqlV."\n";
+    $recordset4 = $db->prepare($sqlV);
+    $recordset4->execute();
+    $telefF = $recordset4->fetch(PDO::FETCH_OBJ);
+    //echo "F:".$telefF->nr."<br>\n"; 
+    if($telefF->nr == 0){
+        $sqlV="UPDATE campana SET status_envio_id = 2 WHERE id = ".$idReg2;
+        //echo $sqlV."<br>\n"; 
+        $recordset4 = $db->prepare($sqlV);  
+        $recordset4->execute();
+        // Borra todos los mensajes
+        $sqlV="DELETE FROM send WHERE id = ".$idReg2;
+        $recordset4 = $db->prepare($sqlV);
+        $recordset4->execute();
+    }
+}
+?>

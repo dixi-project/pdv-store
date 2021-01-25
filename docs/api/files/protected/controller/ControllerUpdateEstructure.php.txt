@@ -1,0 +1,24 @@
+<?php
+class ControllerUpdateEstructure extends Controller {
+    function __construct($view, $conf, $var, $acc) {
+        parent::__construct($view, $conf, $var, $acc);
+    }
+    public function main() {
+      foreach ($this->var as $key => $value) {
+        $this->data[$key] = $value;
+      }
+      $tables = indexModel::bd($this->conf)->getSQL("SHOW TABLES");
+      foreach ($tables as $key => $value) {
+        echo $value->Tables_in_dbdemo."<br>";
+        $est = indexModel::bd($this->conf)->getEstructuraTable($value->Tables_in_dbdemo);
+        echo json_encode($est)."<br>";
+
+        $myfile = fopen(__DIR__."/../../includes/estructure/est_{$value->Tables_in_dbdemo}.json", "w+") or die("Unable to open file!");
+        fwrite($myfile, json_encode($est));
+        fclose($myfile);
+      }
+
+    }
+}
+?>
+

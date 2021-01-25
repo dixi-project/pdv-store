@@ -1,0 +1,12 @@
+<?php
+header("access-control-allow-origin: *");
+class ControllerWebhooktec360 extends Controller {
+    function __construct($view, $conf, $var, $acc) {
+        parent::__construct($view, $conf, $var, $acc);
+    } 
+    public function main() {
+    	echo '{"data": "Ok","status": 200,"statusText": "OK","xhrStatus": "complete"}';
+    	//echo '{"set": true,"webhookUrl": "https://requestb.in/1f9aj261"}';
+    }
+}
+?>

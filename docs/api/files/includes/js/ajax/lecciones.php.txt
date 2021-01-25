@@ -1,0 +1,52 @@
+<?php
+header('content-type: application/json; charset=utf-8');
+header("access-control-allow-origin: *");
+$cad=null;
+include 'configAjax.php';
+foreach ($_REQUEST as $key => $value) {
+    //echo $key . "--".$value."<br>";
+    $$key =  Security($value);
+}
+try {
+    $sqlValidate ="SELECT *  FROM wp_y147tsazb2_posts WHERE post_type =  'sfwd-lessons' AND post_status =  'publish' AND ID IN (SELECT post_id FROM  wp_y147tsazb2_postmeta WHERE  meta_key LIKE  'course_id' AND  meta_value LIKE  '{$idN}')";
+//echo $sqlValidate;
+    $recordset = $db->prepare($sqlValidate);
+    $recordset->execute();
+    $lecciones="";
+    while($resp = $recordset->fetch(PDO::FETCH_OBJ)){
+        if($lecc==$resp->ID){
+            $lecciones .= '<option value="'.$resp->ID.'" selected>'.$resp->post_title.'</option>';
+        }else{
+            $lecciones .= '<option value="'.$resp->ID.'">'.$resp->post_title.'</option>';
+        }
+        
+    }
+
+} catch (PDOException $e) {
+    //echo $e->getMessage() . "--" . $e->getCode();
+}
+if($idN>0){
+    $cad = '
+    <select id="txtLeccion" name="txtLeccion" class="form-control form-control">
+        <option value="0">Selecciona una opción</option>
+        '.$lecciones.'
+    </select>  
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>             
+    <script>
+        $(document).ready(function () {
+            $("#txtLeccion").change(function () {
+                var id = $(this).val();
+                var data = "idN="+id;
+                var html = $.ajax({
+                        url: "includes/js/ajax/temas.php",
+                        type: "POST",
+                        data: data,
+                        async: false
+                }).responseText;
+                $("#capaTema").html(html); 
+            });
+        });   
+    </script>';
+}
+echo $cad;
+?>

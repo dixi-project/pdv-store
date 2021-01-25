@@ -1,0 +1,26 @@
+/*------------------------------------------------------------------
+[Stencil Stylesheet]
+
+Project:    Stencil
+Version:    1
+Last change Date:    26/03/19
+Primary use:     Portfolios , Blogging & Shop Businesses 
+-------------------------------------------------------------------*/
+
+/* Bootstrap Css */
+@import url("bootstrap.min.css");             
+
+/* Main Style Css */
+@import url("style.css"); 
+
+/* Responsive Style Css */
+@import url("responsive.css"); 
+
+/* Fontawesome Icons Style Css */
+@import url("font-awesome/css/fontawesome-all.css");
+
+/* Sick Theme Style Css */
+@import url("slick-theme.css"); 
+
+/* Aos Animation Style Css */
+@import url("aos.css"); 
