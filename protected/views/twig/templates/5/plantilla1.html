@@ -1,5 +1,5 @@
 {% include 'includesHome/header.html' %}
-<body class="home">
+<body class="home" style="background-color: {{empresa.color}};">
 	<!-- Loader -->
 		<div class="se-pre-con"></div>
 		<!-- /Loader -->
@@ -10,95 +10,14 @@
 			<!-- Logo -->
 			<div class="logo">                  
 				<a href="freelance-designer.html" title="Stencil">
-					<img class="visible-desktop" src="{{ pathSite }}design/{{ design }}/assets/images/logo.svg" alt="logo" title="Stencil">
-					<img class="visible-mobile" src="{{ pathSite }}design/{{ design }}/assets/images/logo-mobile.svg" alt="logo" title="Stencil">
+					<img class="visible-desktop" src="{{ getIMG('empresa',empresa.id) }}" alt="logo" title="Stencil">
+					<img class="visible-mobile"  src="{{ getIMG('empresa',empresa.id) }}" alt="logo" title="Stencil">
 				</a>
 			</div>
 			<!-- /Logo -->
 			<!-- Nav Section -->
 			<div class="nav-section">
-				<nav>
-					<!-- Navbar Header -->
-					<div class="navbar-header">
-						<button id="nav-toggle" class="navbar-toggle collapsed" type="button">
-							<span class="icon-bar"></span>
-						</button>
-					</div>
-					<!-- /Navbar Header -->
-					<!-- Side Navbar  -->
-					<div id="bs-navbar">
-						<!-- Menu Logo -->
-						<div class="menu-logo">
-							<img src="{{ pathSite }}design/{{ design }}/assets/images/logo.svg" alt="logo" title="Stencil">
-						</div>
-						<!-- /Menu Logo -->
-						<!-- Main Menu -->
-						<ul id="menu-main-menu" class="nav navbar-nav">
-							<li class="active"><a class="dropdown active" data-toggle="#home" title="Home">Home</a>
-								<ul class="sub-menu" id="home">
-									<li class="active"><a href="freelance-designer.html" title="Freelance Designer">Freelance Designer</a></li>
-									<li><a href="creative-agency.html" title="Creative Agency">Creative Agency</a></li>
-									<li><a href="shop-design.html" title="Shop Design">Shop - Design</a></li>
-									<li><a href="blog-travel.html" title="Blog Travel">Blog - Travel</a></li>
-								</ul>
-							</li>
-							<li><a class="dropdown" data-toggle="#pages" title="Pages">Pages</a>
-								<ul class="sub-menu" id="pages">
-									<li><a href="contact-us.html" title="Contact Us">Contact Us</a></li>
-									<li><a href="about-us.html" title="About Us">About Us</a></li>
-									<li><a href="team.html" title="Team">Team</a></li>
-									<li><a href="team-member.html" title="Team Detail">Team Detail</a></li>
-									<li><a href="services.html" title="Services">Services</a></li>
-									<li><a href="service-detail.html" title="Services Detail">Service Detail</a></li>
-									<li><a href="pricing.html" title="Pricing">Pricing</a></li>
-									<li><a href="404.html" title="404">404</a></li>
-								</ul>
-							</li>
-							<li><a class="dropdown" data-toggle="#portfolio" title="Portfolio">Portfolio</a>
-								<ul class="sub-menu" id="portfolio">
-									<li><a href="portfolio-1.html" title="Portfolio 1">Portfolio 1</a></li>
-									<li><a href="case-study-1.html" title="Case Study 1">Case Study 1</a></li>
-									<li><a href="portfolio-2.html" title="Portfolio 2">Portfolio 2</a></li>
-									<li><a href="case-study-2.html" title="Case Study 2">Case Study 2</a></li>
-									<li><a href="portfolio-3.html" title="Portfolio 3">Portfolio 3</a></li>
-									<li><a href="case-study-3.html" title="Case Study 3">Case Study 3</a></li>
-								</ul>
-							</li>
-							<li><a class="dropdown" data-toggle="#blog" title="Blog">Blog</a>
-							<ul class="sub-menu" id="blog">
-									<li><a href="blog-listing-1.html" title="Blog List 1">Blog List 1</a></li>
-									<li><a href="blog-listing-1-detail.html" title="Blog Detail 1">Blog Detail 1</a></li>
-									<li><a href="blog-listing-2.html" title="Blog List 2">Blog List 2</a></li>
-									<li><a href="blog-listing-2-detail.html" title="Blog Detail 2">Blog Detail 2</a></li>
-									<li><a href="blog-listing-3.html" title="Blog List 3">Blog List 3</a></li>
-									<li><a href="blog-listing-3-detail.html" title="Blog Detail 3">Blog Detail 3</a></li>
-									<li><a href="blog-author.html" title="Blog Author">Blog Author</a></li>
-								</ul>
-							</li>
-							<li><a class="dropdown" data-toggle="#shop" title="Shop">Shop</a>
-								<ul class="sub-menu" id="shop">
-									<li><a href="shop-1.html" title="Shop 1">Shop 1</a></li>
-									<li><a href="shop-detail-1.html" title="Shop Detail 1">Shop Detail 1</a></li>
-									<li><a href="cart-1.html" title="Cart 1">Shop Cart 1</a></li>
-									<li><a href="shop-2.html" title="Shop 2">Shop 2</a></li>
-									<li><a href="shop-detail-2.html" title="Shop Detail 2">Shop Detail 2</a></li>
-									<li><a href="cart-2.html" title="Cart 2">Shop Cart 2</a></li>
-									<li><a href="shop-3.html" title="Shop 3">Shop 3</a></li>
-									<li><a href="shop-detail-3.html" title="Shop Detail 3">Shop Detail 3</a></li>
-									<li><a href="cart-3.html" title="Cart 3">Shop Cart 3</a></li>
-								</ul></li>
-						</ul>
-						<!-- /Main Menu -->
-						<!-- Social Nav -->
-						<ul class="social-nav">
-							<li class="call"><a href="#" title=""><span><i class="fas fa-phone"></i></span></a></li>
-							<li class="fb"><a href="#" title=""><span><i class="fab fa-facebook-f"></i></span></a></li>
-							<li class="mail"><a href="#" title=""><span><i class="fas fa-envelope"></i></span></a></li>
-						</ul> 
-						<!-- /Social Nav -->
-					</div>
-					<!-- /Side Navbar -->
-				</nav>
+				
 			</div>
 			<!-- /Nav Section -->
 		</div>
@@ -106,13 +25,17 @@
 
 		<!-- Banner -->
 		<div class="banner window-height panel-bg">
+		
 			<!-- Vertical Top Container -->
 			<div class="container vertical-top">
 				<!-- Title Container -->
 				<div class="text-center title-container">
+					<!--
+
 					<h6 class="badge badge-secondary" data-aos="fade-down" data-aos-once="true">11 Years of Experience</h6>
-					<h1 class="text-center" data-aos="fade-down" data-aos-once="true"><small>Jack Sparrow</small>Freelance Designer</h1>
-				<div data-aos="fade-down" data-aos-once="true" class="w-100"><a href="#" class="btn btn-border" id="hereingresult" data-toggle="modal" data-target="#contactForm">HIRE ME <span class="icon"></span></a></div>
+					-->
+					<h1 class="text-center" data-aos="fade-down" data-aos-once="true"><!--<small>Jack Sparrow</small>-->{{empresa.empresa}}</h1>
+				<div data-aos="fade-down" data-aos-once="true" class="w-100"><a href="{{pathSite}}store?c={{c}}" class="btn btn-border" id="" data-toggle="" data-target="#">Ver productos <span class="icon"></span></a></div>
 				</div> 
 				<!-- /Title Conatiner -->
 				<!-- Slick Slider -->

@@ -50,12 +50,8 @@ class ControllerCatalogo extends Controller
         $this->data["dominio"] = $dominio;
         $this->data["campos"] = indexModel::bd($this->conf)->getcamposAjax($dominio,"REPORT");
         //var_dump( $this->data["campos"]);
-        if ($dominio == "campana") {
-            $iid = $_SESSION["idUser"];
-            $this->data["datos"] = indexModel::bd($this->conf)->getSQL("SELECT * FROM campana WHERE user_id = {$iid}");
-        } else {
-            $this->data["datos"] = indexModel::bd($this->conf)->getDominio($dominio);
-        }
+        $this->data["datos"] = indexModel::bd($this->conf)->getDominio($dominio);
+        
 
         asort($this->data["datos"]);
         $this->view->show("adminCatalogo.html", $this->data, $this->accion);

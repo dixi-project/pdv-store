@@ -114,11 +114,13 @@ body {
 	overflow-x: hidden;
 	color: #dbdbdb;
 	margin: 0;
+/*
 	background: #1a1a1a; 
 	background: -moz-linear-gradient(-45deg, #1a1a1a 0%, #323232 42%, #323232 98%); 
 	background: -webkit-linear-gradient(-45deg, #1a1a1a 0%,#323232 42%,#323232 98%); 
 	background: linear-gradient(135deg, #1a1a1a 0%,#323232 42%,#323232 98%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1a1a1a', endColorstr='#323232',GradientType=1 ); 
+	*/
 	background-attachment: fixed;
 }
 @font-face {

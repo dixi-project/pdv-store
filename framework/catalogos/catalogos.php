@@ -350,7 +350,8 @@ class Catalogos
                     }
                 }
             }
-
+            //echo "X:".$ss;
+            //exit();
             $recordset = $db->prepare($ss);
             $recordset->execute();
             $o = 0;

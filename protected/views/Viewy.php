@@ -286,7 +286,7 @@ class Viewy {
     }
 
     private function getImagen($path,$idImagen) {
-        $types = array("jpg", "png", "gif");
+        $types = array("jpg", "png", "gif","jpeg");
         foreach ($types as $key => $value) {
             $img = $this->pathCMSSite . "includes/images/".$path."/" . $idImagen . "." . $value;
             //return $img;
