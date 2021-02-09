@@ -13,6 +13,8 @@ class ControllerIndex extends Controller {
             "empresa_id"=>$c
         );
         $this->data["categorias"] = indexModel::bd($this->conf)->getDominioID("categoria",$vv);
+        $this->data["productos"] = indexModel::bd($this->conf)->getDominioID("producto",$vv);
+
         $template="plantilla".$this->data["empresa"]->plantilla_id.".html";
         $this->view->show($template, $this->data, $this->accion);
     }
