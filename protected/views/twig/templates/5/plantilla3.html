@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en" class="has-hover no-js">
+<head>
+	<title>Stencil | Shop Design 1</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- CSS styles -->
+	<link rel="stylesheet" href="{{ pathSite }}design/{{ design }}/assets/css/main.css">
+	<!-- /CSS styles -->
+</head>
+<body class="shop-design-one"  style="background-color: {{empresa.color}};">
+	<!-- Loader -->
+	<div class="se-pre-con"></div>
+	<!-- /Loader -->
+	<!-- Main -->
+	<main>
+		<!-- Header -->
+		<div class="header animate-top">
+			<!-- Logo -->
+			<div class="logo">                  
+				<a href="freelance-designer.html" title="Stencil">
+					<img class="visible-desktop" src="{{ getIMG('empresa',empresa.id) }}" alt="logo" title="Stencil">
+					<img class="visible-mobile" src="{{ getIMG('empresa',empresa.id) }}" alt="logo" title="Stencil">
+				</a>
+			</div>
+			<!-- /Logo -->
+			</div>
+			<!-- /Header -->
+            <input type="hidden" id="path" name="path" value="{{pathSite}}">
+            <input type="hidden" id="idEmpresa" name="idEmpresa" value="{{c}}">
+			<!-- Banner -->
+			<div class="banner panel-bg">
+
+				<!-- Portfolio Thumbnails -->
+				<div class="portfolio-thumbnail flex-row" data-aos="fade-down" data-aos-once="true">
+					<!-- Nav Tabs -->
+					<ul class="nav nav-tabs s-tabs w-100" role="tablist">
+                        {% for keyx, value in categorias %}
+						<li class="nav-item ">
+							<a class="nav-link" href="#{{value.categoria}}" role="tab" data-toggle="tab">
+								<img src="{{ getIMG('categoria',value.id) }}" class="shop-icon-hidden" alt="">
+								<img src="{{ getIMG('categoria',value.id) }}" class="shop-icon-visible" alt="">
+                                {{value.categoria}}</a>
+						</li>
+						{% endfor %}
+					</ul>
+					<!-- /Nav Tabs -->
+				</div>
+				<!-- /Portfolio Thumbnails -->
+
+
+				<!-- Tab Content -->
+                <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                    <div class="tab-content" data-aos="fade-up" data-aos-once="true">
+                        <!-- Posters Tab -->
+                        {% for keyx, value in categorias %}
+                        <div role="tabpanel" class="tab-pane" id="{{value.categoria}}">
+                            <!-- Sub Content -->
+                            <div class="sub-content">
+                                <!-- Shop Wrapper -->
+                                <div class="shop-wrapper">
+                                    <div class="container">
+                                        <div class="row">
+                                            {% for key1, value1 in productos %}
+                                            {% if value.id == value1.categoria_id %}
+                                                <div class="col-6 col-sm-6 col-xs-6 col-md-6 col-lg-3">
+                                                    <!-- Shop Outer Layer -->
+                                                    <div class="shop-outer-layer">
+                                                        <!-- Product Title -->
+                                                        <div class="product-title">
+                                                            <h3>{{value1.producto}}</h3>
+                                                            <div class="border-line"></div>
+                                                        </div>
+                                                        <!-- /Product Title -->
+                                                        <!-- Product Image -->
+                                                        <div class="product-image">
+                                                            <img src="{{ getIMG('producto',value1.id) }}" class="img-fluid" alt="Stencil" title="Shop">
+                                                        </div>
+                                                        <!-- /Product Image -->
+                                                        <!-- Product Price -->
+                                                        <div class="product-price">
+                                                            <p>${{value1.precio_venta}}</p>
+                                                        </div>
+                                                        <!-- /Product Price -->
+                                                        <!-- Add Quantity -->
+                                                        <div class="add-qty">
+                                                            <button class="add-qty-btn" title="Add To Cart" value="">
+                                                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                                            </button>
+                                                        </div>
+                                                        <!-- Add Quantity -->
+                                                        <!-- Overlay product -->
+                                                        <div class="overlay-product">
+                                                            <div class="overlay-text">
+                                                                <div class="product-image">
+                                                                    <img src="{{ getIMG('producto',value1.id) }}" class="img-fluid" alt="Stencil" title="Shop">
+                                                                </div>
+                                                                <p>
+                                                                    {% for key2, val2 in unidades %}
+                                                                    {%if val2.id == value1.unidad_medida_id %}
+                                                                    {{val2.unidad_medida}}
+                                                                    {% endif %}
+                                                                    {% endfor %}
+                                                                    <hr>
+                                                                </p>
+                                                                <div class="product-style shop-detail-one">
+                                                                    <div class="input-group plus-minus-input ajaxcart__qty" style="left:0;">
+                                                                        <div class="input-group-button">
+                                                                            <button type="button" class="button hollow circle qty-minus" data-quantity="minus" data-field="quantity">
+                                                                                <i class="fa fa-minus" aria-hidden="true"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                        <input class="input-group-field qty" type="number" name="quantity_{{value1.id}}" id="quantity_{{value1.id}}" value="1">
+                                                                        <div class="input-group-button"> 
+                                                                            <button type="button" class="button hollow circle qty-plus" data-quantity="plus" data-field="quantity_{{value1.id}}">
+                                                                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!--<p style="font-size: 5px;">{{value1.descripcion}}</p>-->
+                                                                <button title="Agregar al carrito" class="more-info sm-lg-info addProducto" data-id="{{value1.id}}" >Agregar</button>
+                                                                <button title="Agregar al carrito" class="more-info sm-md-info addProducto" data-id="{{value1.id}}" >Agregar</button>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /Overlay product -->
+                                                    </div>
+                                                    <!-- /Shop Outer Layer -->
+                                                </div>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /Shop Wrapper -->
+                            </div>
+                            <!-- /Sub Content -->
+                        </div>
+                        {% endfor %}
+                        <!-- /Posters Tab -->
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
+                    <!-- Cart txt -->
+                    <div class="cart-txt aos-init aos-animate" data-aos="fade-left" data-aos-once="true">
+                        <h1>Pedido</h1>
+                        <hr>
+                            <h3>Nombre</h3>
+                            <input type="text" class="form-control" name="txtName" id="txtName">
+                            <h3>Teléfono</h3>
+                           <input type="phone" class="form-control" name="txtPhone" id="txtPhone">
+                           <h3>E-mail</h3>
+                           <input type="email" class="form-control" name="txtEmail" id="txtEmail">
+                           <h3>Dirección</h3>
+                           <input type="phone" class="form-control" name="txtDireccion" id="txtDireccion">
+                           <hr>
+                        <!-- Payment Method -->
+                       
+                        <div id="capaPedido">
+
+                        </div>
+                        <!-- Payment Method -->
+                    </div>
+                    <!-- /Cart txt -->
+                </div>
+            </div>
+				<!-- /Tab Content -->	
+			</div>
+			<!-- /Banner -->
+		</main>
+		<!-- /Main -->
+
+        {% include 'includesHome/footerJS.html' %}
+
+        <script>
+            
+
+
+$(".addProducto").click(function () {
+    var idProducto = $(this).attr("data-id");
+    var actionS ="add";
+    pedido(idProducto,actionS);
+});   
+
+function pedido(idProducto,actionS){
+    var cantidad = $("#quantity_"+idProducto).val();
+    var path = $("#path").val();
+    var idEmpresa = $("#idEmpresa").val();
+    var name = $("#txtName").val();
+    var tel = $("#txtPhone").val();
+    var cor = $("#txtEmail").val();
+    var dir = $("#txtDireccion").val();
+    
+    var data = "idp="+idProducto+"&can="+cantidad+"&ide="+idEmpresa+"&na="+name+"&tel="+tel+"&cor="+cor+"&dir="+dir+"&acti="+actionS;
+    var html = $.ajax({
+        url: path+"includes/ajax/addPedido.php",
+        type: "POST",
+        data: data,
+        async: false
+    }).responseText;
+    $('#capaPedido').html(html);
+}
+    pedido(0,"");
+        </script>
+	</body>
+	</html>

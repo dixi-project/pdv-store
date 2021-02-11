@@ -9,6 +9,7 @@ $conf = require($config);
 require dirname(__FILE__).'/../../'.$conf['folderModelos'].'SPDO.php';
 $db = SPDO::singleton($conf['host'],$conf['dbname'],$conf['username'],$conf['password']);
 $pathSitioCMS = $conf['pathCMSSite'];
+$pathSite = $conf['pathSite'];
 function Security($_Cadena) {
     $_Cadena = htmlspecialchars(trim(addslashes(stripslashes(strip_tags($_Cadena)))));
     $_Cadena = str_replace(chr(160),'',$_Cadena);

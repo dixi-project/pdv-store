@@ -14,7 +14,7 @@ class ControllerIndex extends Controller {
         );
         $this->data["categorias"] = indexModel::bd($this->conf)->getDominioID("categoria",$vv);
         $this->data["productos"] = indexModel::bd($this->conf)->getDominioID("producto",$vv);
-
+        $this->data["unidades"] = indexModel::bd($this->conf)->getDominioID("unidad_medida");
         $template="plantilla".$this->data["empresa"]->plantilla_id.".html";
         $this->view->show($template, $this->data, $this->accion);
     }
