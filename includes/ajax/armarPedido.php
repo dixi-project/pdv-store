@@ -16,14 +16,22 @@ $recordset22 = $db->prepare($sqlValidate22);
 $recordset22->execute();
 $empresa= $recordset22->fetch(PDO::FETCH_OBJ);
 
+
+
 // --> Actualizar Cliente
 $sqlValidate22 = "UPDATE cliente SET cliente='{$nam}',telefono='{$tel}',correo='{$cor}',direccion='{$dir}'  WHERE id = ".$idE;
 $recordset22 = $db->prepare($sqlValidate22);
 $recordset22->execute();
 // --> Actualizar Pedido
-$sqlValidate22 = "UPDATE pedidos SET status_pedido_id = 2 WHERE id = ".$idP;
+$sqlValidate22 = "UPDATE pedidos SET status_pedido_id = 2, nota='{$not}' WHERE id = ".$idP;
 $recordset22 = $db->prepare($sqlValidate22);
 $recordset22->execute();
+// --> Pedido
+$sql44 = "SELECT * FROM pedidos WHERE id = ".$idP;
+$rec44 = $db->prepare($sql44);
+$rec44->execute();
+$pedido= $rec44->fetch(PDO::FETCH_OBJ);
+
 
 // Extraer datos cliente
 $sqlValidate22 = "SELECT * FROM cliente WHERE id = ".$idE;
@@ -44,6 +52,8 @@ while($detalle = $rec3->fetch(PDO::FETCH_OBJ)){
 }
 $cad.="--------------------------%0A";
 $cad.="TOTAL: $".number_format($tot,"2",".",",")."%0A";
+$cad.="--------------------------%0A";
+$cad.=$pedido->nota."%0A";
 $cad.="--------------------------%0A";
 $cad.=$empresa->pie_pagina_pedido;
 echo "+52{$empresa->telefono}?text=".$cad;

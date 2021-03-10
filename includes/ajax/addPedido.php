@@ -42,7 +42,7 @@ $recordset22 = $db->prepare($sqlValidate22);
 $recordset22->execute();
 $pedido = $recordset22->fetch(PDO::FETCH_OBJ);
 if ($pedido->nr == 0) {
-    $sqlV = "INSERT INTO `pedidos`( `fecha_hora`, `total`, `cliente_id`, `empresa_id`, `status_pedido_id`) VALUES (NOW(),0,{$idCliente},{$ide} ,1)";
+    $sqlV = "INSERT INTO `pedidos`( `fecha_hora`, `total`, `cliente_id`, `empresa_id`, `status_pedido_id`,`nota`) VALUES (NOW(),0,{$idCliente},{$ide} ,1,'{$not}')";
     //echo "I: ".$sqlV."<br>";
     $reco2 = $db->prepare($sqlV);
     $reco2->execute();
@@ -59,9 +59,20 @@ $producto = $recorPro->fetch(PDO::FETCH_OBJ);
 
 // --> Agregar registro
 if ($acti == "add") {
-    $tott = $producto->precio_venta * $can;
-    $sqlV3 = "INSERT INTO detalle_pedido (producto_id,pedidos_id,cantidad,precio_venta,total) VALUES ({$idp},{$idPedido},{$can},{$producto->precio_venta},{$tott})";
-    //echo $sqlV3."<br>";
+    // --> Validar si el peiddo ya vive en elregistro de  productos
+    $sqlValidateS2  = "SELECT count(*) as nr,id,cantidad FROM detalle_pedido WHERE producto_id={$idp} AND pedidos_id = {$idPedido}";
+    $recoro = $db->prepare($sqlValidateS2);
+    $recoro->execute();
+    $detallePed = $recoro->fetch(PDO::FETCH_OBJ);
+    if($detallePed->nr == 0 ){
+        $tott = $producto->precio_venta * $can;
+        $sqlV3 = "INSERT INTO detalle_pedido (producto_id,pedidos_id,cantidad,precio_venta,total) VALUES ({$idp},{$idPedido},{$can},{$producto->precio_venta},{$tott})";
+    }else{
+        $NUEVcANT = $can + $detallePed->cantidad;
+        $tott = $producto->precio_venta * $NUEVcANT;
+        $sqlV3 = "UPDATE detalle_pedido SET cantidad = $NUEVcANT, total = $tott WHERE id = ".$detallePed->id;
+    }
+    //echo $sqlV3;
     $reco23 = $db->prepare($sqlV3);
     $reco23->execute();
 } elseif ($acti == "delete") {
@@ -116,7 +127,7 @@ echo '
         <table class="table">
             <thead>
                 <tr>
-                    <th></th>
+                    <th>Can</th>
                     <th>Nombre</th>
                     <th>Precio</th>
                     <th>Borrar</th>
@@ -130,6 +141,7 @@ echo '
 </div>
 <div class="payment-method">
 <h4>Total: $' . number_format($tot, "2", ".", ",") . '</h4>
+
 <form action="" method="post" name="frm12" id="frm12">
  <button class="checkout-btn btn" type="button" title="Realizar pedido" name="cmd11" id="cmd11" data-cliente="' . $idCliente . '" data-empresa="' . $ide . '" data-pedido="' . $idPedido . '">Solicitar<span class="icon"></span></button>
  </form>
@@ -157,6 +169,7 @@ echo '
         }
         var cor = $("#txtEmail").val();
         var dir = $("#txtDireccion").val();
+        var nota = $("#txtNota").val();
 
         var idPedido = $(this).attr("data-pedido");
         var idEmpresa = $(this).attr("data-empresa");
@@ -168,7 +181,8 @@ echo '
             "nam": name,
             "cor": cor,
             "tel": tel,
-            "dir": dir
+            "dir": dir,
+            "not": nota
         };
         var path = $("#path").val();
         var html = $.ajax({

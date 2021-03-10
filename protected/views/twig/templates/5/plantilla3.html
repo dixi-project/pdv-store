@@ -109,7 +109,7 @@
                                                                 <div class="product-style shop-detail-one">
                                                                     <div class="input-group plus-minus-input ajaxcart__qty" style="left:0;">
                                                                         <div class="input-group-button">
-                                                                            <button type="button" class="button hollow circle qty-minus" data-quantity="minus" data-field="quantity">
+                                                                            <button type="button" class="button hollow circle qty-minus" data-quantity="minus" data-field="quantity_{{value1.id}}">
                                                                                 <i class="fa fa-minus" aria-hidden="true"></i>
                                                                             </button>
                                                                         </div>
@@ -156,6 +156,9 @@
                            <input type="email" class="form-control" name="txtEmail" id="txtEmail">
                            <h3>Dirección</h3>
                            <input type="phone" class="form-control" name="txtDireccion" id="txtDireccion">
+                           
+                           <h3>Nota</h3>
+                            <textarea class="form-control" row="3" name="txtNota" id="txtNota"></textarea>
                            <hr>
                         <!-- Payment Method -->
                        
@@ -193,8 +196,9 @@ function pedido(idProducto,actionS){
     var tel = $("#txtPhone").val();
     var cor = $("#txtEmail").val();
     var dir = $("#txtDireccion").val();
+    var nota = $("#txtNota").val();
     
-    var data = "idp="+idProducto+"&can="+cantidad+"&ide="+idEmpresa+"&na="+name+"&tel="+tel+"&cor="+cor+"&dir="+dir+"&acti="+actionS;
+    var data = "idp="+idProducto+"&can="+cantidad+"&ide="+idEmpresa+"&na="+name+"&tel="+tel+"&cor="+cor+"&dir="+dir+"&acti="+actionS+"&not="+nota;
     var html = $.ajax({
         url: path+"includes/ajax/addPedido.php",
         type: "POST",
