@@ -16,8 +16,6 @@ $recordset22 = $db->prepare($sqlValidate22);
 $recordset22->execute();
 $empresa= $recordset22->fetch(PDO::FETCH_OBJ);
 
-
-
 // --> Actualizar Cliente
 $sqlValidate22 = "UPDATE cliente SET cliente='{$nam}',telefono='{$tel}',correo='{$cor}',direccion='{$dir}'  WHERE id = ".$idE;
 $recordset22 = $db->prepare($sqlValidate22);
