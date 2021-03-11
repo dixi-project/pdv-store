@@ -16,10 +16,6 @@ $recordset22 = $db->prepare($sqlValidate22);
 $recordset22->execute();
 $empresa= $recordset22->fetch(PDO::FETCH_OBJ);
 
-// --> Actualizar Cliente
-$sqlValidate22 = "UPDATE cliente SET cliente='{$nam}',telefono='{$tel}',correo='{$cor}',direccion='{$dir}'  WHERE id = ".$idE;
-$recordset22 = $db->prepare($sqlValidate22);
-$recordset22->execute();
 // --> Actualizar Pedido
 $sqlValidate22 = "UPDATE pedidos SET status_pedido_id = 2, nota='{$not}' WHERE id = ".$idP;
 $recordset22 = $db->prepare($sqlValidate22);
@@ -32,10 +28,23 @@ $pedido= $rec44->fetch(PDO::FETCH_OBJ);
 
 
 // Extraer datos cliente
-$sqlValidate22 = "SELECT * FROM cliente WHERE id = ".$idE;
+$sqlValidate22 = "SELECT * FROM cliente WHERE id = ".$idC;
 $recordset22 = $db->prepare($sqlValidate22);
 $recordset22->execute();
 $cliente= $recordset22->fetch(PDO::FETCH_OBJ);
+
+// --> somar todal de peidods del cliente 
+$sqTot  ="SELECT SUM(total) as total  FROM pedidos WHERE cliente_id= {$idC} AND status_pedido_id = 3";
+$re24tot = $db->prepare($sqTot);
+$re24tot->execute();
+$rowTotale = $re24tot->fetch(PDO::FETCH_OBJ);
+
+$totCompras = $rowTotale->total + $pedido->total;
+// --> Actualizar Cliente
+$sqlValidate22 = "UPDATE cliente SET cliente='{$nam}',telefono='{$tel}',correo='{$cor}',direccion='{$dir}',ultima_compra=NOW(),total_compras={$totCompras}  WHERE id = ".$idC;
+$recordset22 = $db->prepare($sqlValidate22);
+$recordset22->execute();
+
 $cad='Saludos: '.$cliente->cliente."%0A";
 $cad.=$empresa->encabezado_pedido."%0A";
 $cad.="--------------------------%0A";
