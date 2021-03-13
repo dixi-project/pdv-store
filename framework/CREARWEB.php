@@ -52,6 +52,7 @@ class CREARWEB {
             }
             $controllerName = "Controller". ucfirst($accion);
        }
+       $controllerName = "ControllerIndex";
 // -- >Lo mismo sucede con las acciones, si no hay accion, tomamos index como accion
       $actionName = "main";
 // --> Carga la direccion de las vistas

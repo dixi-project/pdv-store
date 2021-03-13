@@ -143,7 +143,7 @@ echo '
 <h4>Total: $' . number_format($tot, "2", ".", ",") . '</h4>
 
 <form action="" method="post" name="frm12" id="frm12">
- <button class="checkout-btn btn" type="button" title="Realizar pedido" name="cmd11" id="cmd11" data-cliente="' . $idCliente . '" data-empresa="' . $ide . '" data-pedido="' . $idPedido . '">Solicitar<span class="icon"></span></button>
+ <button class="checkout-btn btn" type="button" title="Realizar pedido" name="cmd11" id="cmd11" data-cliente="' . $idCliente . '" data-empresa="' . $ide . '" data-pedido="' . $idPedido . '">Mandar a pedir<span class="icon"></span></button>
  </form>
 </div>
 ';
