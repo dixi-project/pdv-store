@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en" class="has-hover no-js">
 <head>
-	<title>Stencil | Shop Design 1</title>
+	<title>{{empresa.empresa}}</title>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="description" content="">
@@ -9,6 +9,18 @@
 	<!-- CSS styles -->
 	<link rel="stylesheet" href="{{ pathSite }}design/{{ design }}/assets/css/main.css">
 	<!-- /CSS styles -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    {% if empresa.google_analitycs != "" %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{empresa.google_analitycs}}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '{{empresa.google_analitycs}}');
+</script>
+{% endif %}
+
 </head>
 <body class="shop-design-one"  style="background-color: {{empresa.color}};">
 	<!-- Loader -->
@@ -20,9 +32,9 @@
 		<div class="header animate-top">
 			<!-- Logo -->
 			<div class="logo">                  
-				<a href="freelance-designer.html" title="Stencil">
-					<img class="visible-desktop" src="{{ getIMG('empresa',empresa.id) }}" alt="logo" title="Stencil">
-					<img class="visible-mobile" src="{{ getIMG('empresa',empresa.id) }}" alt="logo" title="Stencil">
+				<a href="freelance-designer.html" title="{{empresa.empresa}}">
+					<img class="visible-desktop" src="{{ getIMG('empresa',empresa.id) }}" alt="logo" title="{{empresa.empresa}}">
+					<img class="visible-mobile" src="{{ getIMG('empresa',empresa.id) }}" alt="logo" title="{{empresa.empresa}}">
 				</a>
 			</div>
 			<!-- /Logo -->
