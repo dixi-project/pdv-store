@@ -275,8 +275,8 @@ class Viewy {
             $loader = new Twig_Loader_Filesystem($this->viewsFolder.'twig/templates/'.$this->conf["design"]."/");
             $twig = new Twig_Environment($loader, array('debug' => true));
             $twig->addExtension(new Twig_Extension_Debug());
-            $function = new Twig_SimpleFunction('getIMG', function ($path,$id) {
-                return $this->getImagen($path,$id);
+            $function = new Twig_SimpleFunction('getIMG', function ($path,$id,$imgExt="") {
+                return $this->getImagen($path,$id,$imgExt);
             });
             $twig->addFunction($function);
             echo $twig->render($name, $mandarData);
@@ -285,7 +285,7 @@ class Viewy {
         }
     }
 
-    private function getImagen($path,$idImagen) {
+    private function getImagen($path,$idImagen,$imgExt="") {
         $types = array("jpg", "png", "gif","jpeg");
         foreach ($types as $key => $value) {
             $img = $this->pathCMSSite . "includes/images/".$path."/" . $idImagen . "." . $value;
@@ -294,6 +294,9 @@ class Viewy {
             if ($this->url_exists($img)) {
                 return $img;
             }
+        }
+        if($imgExt!=""){
+            return $imgExt;
         }
         return $this->pathCMSSite . "includes/images/profile/profile.png";
     }

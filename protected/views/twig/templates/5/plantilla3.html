@@ -89,7 +89,7 @@
                                                         <!-- /Product Title -->
                                                         <!-- Product Image -->
                                                         <div class="product-image">
-                                                            <img src="{{ getIMG('producto',value1.id) }}" class="img-fluid" alt="Stencil" title="Shop">
+                                                            <img src="{{ getIMG('producto',value1.id,value1.url_imagen) }}" class="img-fluid" alt="Stencil" title="Shop">
                                                         </div>
                                                         <!-- /Product Image -->
                                                         <!-- Product Price -->
@@ -108,7 +108,7 @@
                                                         <div class="overlay-product">
                                                             <div class="overlay-text">
                                                                 <div class="product-image">
-                                                                    <img src="{{ getIMG('producto',value1.id) }}" class="img-fluid" alt="Stencil" title="Shop">
+                                                                    <img src="{{ getIMG('producto',value1.id,value1.url_imagen) }}" class="img-fluid" alt="Stencil" title="Shop">
                                                                 </div>
                                                                 <p>
                                                                     {% for key2, val2 in unidades %}
