@@ -16,10 +16,13 @@ class ControllerIndex extends Controller {
         $vv = array(
             "empresa_id"=>$this->data["idEmpresa"]
         );
-        $this->data["categorias"] = indexModel::bd($this->conf)->getDominioID("categoria",$vv);
+        //$this->data["categorias"] = indexModel::bd($this->conf)->getDominioID("categoria",$vv);
+        $this->data["categorias"] = indexModel::bd($this->conf)->getSql("SELECT * FROM categoria WHERE empresa_id = ". $this->data["idEmpresa"]." ORDER BY categoria");
+        //asort($this->data["categorias"]);
+        //var_dump($this->data["categorias"] );
         $this->data["productos"] = indexModel::bd($this->conf)->getDominioID("producto",$vv);
         $this->data["unidades"] = indexModel::bd($this->conf)->getDominioID("unidad_medida");
-        $template="plantilla3.html";
+        $template="plantilla5.html";
          
         $this->view->show($template, $this->data, $this->accion);
     }

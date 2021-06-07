@@ -298,6 +298,9 @@ class Viewy {
         if($imgExt!=""){
             return $imgExt;
         }
+        if($path=="categoria"){
+            return $this->pathCMSSite . "includes/img/Productos.png";
+        }
         return $this->pathCMSSite . "includes/images/profile/profile.png";
     }
 

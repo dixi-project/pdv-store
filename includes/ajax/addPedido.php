@@ -8,6 +8,14 @@ foreach ($_COOKIE as $key => $value) {
     //echo $key . "--".$value."<br>"; 
     $$key =  Security($value);
 }
+// --> Datos de la empresa
+$sqlValidate2  = "SELECT * FROM empresa WHERE id='{$ide}'";
+//echo $sqlValidate2."<br>";
+$recordset2 = $db->prepare($sqlValidate2);
+$recordset2->execute();
+$empresaa = $recordset2->fetch(PDO::FETCH_OBJ);
+
+
 // --> Buscar el cliente para generarle su pedido
 $sqlValidate2  = "SELECT count(*)as nr, id FROM cliente WHERE cookie='{$PHPSESSID}'";
 //echo $sqlValidate2."<br>";
@@ -25,7 +33,7 @@ if ($cliente->nr == 0) {
     if (trim($tel) != "") $tele = $tel;
     if (trim($cor) != "") $corr = $cor;
     if (trim($dir) != "") $dire = $dir;
-    $sqlV  = "INSERT INTO cliente (`cliente`, `telefono`, `correo`, `direccion`, `empresa_id`, `cookie`) VALUES ('{$cliente}','{$tele}','{$corr}','{$dire}','{$ide}','{$PHPSESSID}')";
+    $sqlV  = "INSERT INTO cliente (`cliente`, `telefono`,  `direccion`, `empresa_id`, `cookie`) VALUES ('{$cliente}','{$tele}','{$dire}','{$ide}','{$PHPSESSID}')";
     //echo $sqlV."<br>";
     $reco2 = $db->prepare($sqlV);
     $reco2->execute();
@@ -35,14 +43,14 @@ if ($cliente->nr == 0) {
 }
 //echo "ID: ".$idCliente;
 // --> Buscar pedido abierto 
-$sqlValidate22  = "SELECT count(*)as nr, id FROM pedidos WHERE cliente_id={$idCliente} AND empresa_id={$ide} AND status_pedido_id=1";
+$sqlValidate22  = "SELECT count(*)as nr, id FROM pedidos WHERE cliente_id={$idCliente} AND empresa_id={$ide} AND status_pedido_id={$empresaa->status_pedido_id}";
 //echo "X:".$sqlValidate22."<br>";
 
 $recordset22 = $db->prepare($sqlValidate22);
 $recordset22->execute();
 $pedido = $recordset22->fetch(PDO::FETCH_OBJ);
 if ($pedido->nr == 0) {
-    $sqlV = "INSERT INTO `pedidos`( `fecha_hora`, `total`, `cliente_id`, `empresa_id`, `status_pedido_id`,`nota`) VALUES (NOW(),0,{$idCliente},{$ide} ,1,'{$not}')";
+    $sqlV = "INSERT INTO `pedidos`( `fecha_hora`, `total`, `cliente_id`, `empresa_id`, `status_pedido_id`,`nota`,fecha_entrga) VALUES (NOW(),0,{$idCliente},{$ide} ,{$empresaa->status_pedido_id},'{$not}','{$fec}')";
     //echo "I: ".$sqlV."<br>";
     $reco2 = $db->prepare($sqlV);
     $reco2->execute();
@@ -116,13 +124,16 @@ while ($row = $re2->fetch(PDO::FETCH_OBJ)) {
     ' . $total . '
     </td>
     <td class="delete-icon">
-        <i class="fa fa-trash cmdDele" aria-hidden="true" data-id="' . $row->id . '"></i>
+        <button class="btn btn-round btn-danger cmdDele" data-id="' . $row->id . '">
+                        <i class="glyph-icon icon-trash"></i>
+                    </button>
+
     </td>
 </tr>';
 }
 echo '
 <div class="view-items aos-init aos-animate" data-aos="fade-right" data-aos-once="true">
-    <h3>Productos</h3>
+ 
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -143,8 +154,14 @@ echo '
 <h4>Total: $' . number_format($tot, "2", ".", ",") . '</h4>
 
 <form action="" method="post" name="frm12" id="frm12">
- <button class="checkout-btn btn" type="button" title="Realizar pedido" name="cmd11" id="cmd11" data-cliente="' . $idCliente . '" data-empresa="' . $ide . '" data-pedido="' . $idPedido . '">Mandar a pedir<span class="icon"></span></button>
- </form>
+<button class="btn btn-primary btn-lg btn-block" name="cmd11" id="cmd11" data-cliente="' . $idCliente . '" data-empresa="' . $ide . '" data-pedido="' . $idPedido . '" type="button">
+                      <span>Solicitar pedido</span>
+                      <i class="glyph-icon icon-arrow-right"></i>
+                  </button>
+
+
+</form>
+
 </div>
 ';
 ?>
@@ -167,7 +184,14 @@ echo '
             $("#txtPhone").focus();
             return false;
         }
-        var cor = $("#txtEmail").val();
+        var fec = $("#txtFec").val();
+        if (fec.trim() == "") {
+            alert(unescape("Es necesario su fecha de entrega!!!"));
+            $("#txtFec").focus();
+            return false;
+        }
+
+
         var dir = $("#txtDireccion").val();
         var nota = $("#txtNota").val();
 
@@ -179,7 +203,7 @@ echo '
             "idE": idEmpresa,
             "idC": idCliente,
             "nam": name,
-            "cor": cor,
+            "fec": fec,
             "tel": tel,
             "dir": dir,
             "not": nota

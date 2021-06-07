@@ -12,12 +12,15 @@ foreach ($_COOKIE as $key => $value) {
 }
 // --> Empresa
 $sqlValidate22 = "SELECT * FROM empresa WHERE id = ".$idE;
+//echo $sqlValidate22."<br>";
 $recordset22 = $db->prepare($sqlValidate22);
 $recordset22->execute();
 $empresa= $recordset22->fetch(PDO::FETCH_OBJ);
-
+$idns = $empresa->status_pedido_id + 1;
 // --> Actualizar Pedido
-$sqlValidate22 = "UPDATE pedidos SET status_pedido_id = 2, nota='{$not}' WHERE id = ".$idP;
+$sqlValidate22 = "UPDATE pedidos SET status_pedido_id = {$idns}, nota='{$not}',fecha_entrga='{$fec}' WHERE id = ".$idP;
+//echo $sqlValidate22 ;
+//exit();
 $recordset22 = $db->prepare($sqlValidate22);
 $recordset22->execute();
 // --> Pedido
@@ -41,7 +44,7 @@ $rowTotale = $re24tot->fetch(PDO::FETCH_OBJ);
 
 $totCompras = $rowTotale->total + $pedido->total;
 // --> Actualizar Cliente
-$sqlValidate22 = "UPDATE cliente SET cliente='{$nam}',telefono='{$tel}',correo='{$cor}',direccion='{$dir}',ultima_compra=NOW(),total_compras={$totCompras}  WHERE id = ".$idC;
+$sqlValidate22 = "UPDATE cliente SET cliente='{$nam}',telefono='{$tel}',direccion='{$dir}',ultima_compra=NOW(),total_compras={$totCompras}  WHERE id = ".$idC;
 $recordset22 = $db->prepare($sqlValidate22);
 $recordset22->execute();
 

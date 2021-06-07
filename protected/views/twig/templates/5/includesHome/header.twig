@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+
+      /*Loading Spinner */
+      .spinner {
+        margin: 0;
+        width: 70px;
+        height: 18px;
+        margin: -35px 0 0 -9px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        text-align: center;
+      }
+
+      .spinner > div {
+        width: 18px;
+        height: 18px;
+        background-color: #333333;
+        border-radius: 100%;
+        display: inline-block;
+        -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+        animation: bouncedelay 1.4s infinite ease-in-out;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+      }
+
+      .spinner .bounce1 {
+        -webkit-animation-delay: -0.32s;
+        animation-delay: -0.32s;
+      }
+
+      .spinner .bounce2 {
+        -webkit-animation-delay: -0.16s;
+        animation-delay: -0.16s;
+      }
+
+      @-webkit-keyframes bouncedelay {
+        0%,
+        80%,
+        100% {
+          -webkit-transform: scale(0);
+        }
+        40% {
+          -webkit-transform: scale(1);
+        }
+      }
+
+      @keyframes bouncedelay {
+        0%,
+        80%,
+        100% {
+          transform: scale(0);
+          -webkit-transform: scale(0);
+        }
+        40% {
+          transform: scale(1);
+          -webkit-transform: scale(1);
+        }
+      }
+    </style>
+
+    <meta charset="UTF-8" />
+    <!--[if IE
+      ]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"
+    /><![endif]-->
+    <title>Tienda {{empresa.empresa}}</title>
+    <meta name="description" content="" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <!-- Favicons -->
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="144x144"
+      href="{{ pathSite }}design/1/assets/images/icons/apple-touch-icon-144-precomposed.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="114x114"
+      href="{{ pathSite }}design/1/assets/images/icons/apple-touch-icon-114-precomposed.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="72x72"
+      href="{{ pathSite }}design/1/assets/images/icons/apple-touch-icon-72-precomposed.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      href="{{ pathSite }}design/1/assets/images/icons/apple-touch-icon-57-precomposed.png"
+    />
+    <link
+      rel="shortcut icon"
+      href="{{ pathSite }}design/1/assets/images/icons/favicon.png"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/bootstrap/css/bootstrap.css"
+    />
+
+    <!-- HELPERS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/helpers/animate.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/helpers/backgrounds.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/helpers/boilerplate.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/helpers/border-radius.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/helpers/grid.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/helpers/page-transitions.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/helpers/spacing.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/helpers/typography.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/helpers/utils.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/helpers/colors.css"
+    />
+
+    <!-- ELEMENTS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/elements/badges.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/elements/buttons.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/elements/content-box.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/elements/dashboard-box.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/elements/forms.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/elements/images.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/elements/info-box.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/elements/invoice.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/elements/loading-indicators.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/elements/menus.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/elements/panel-box.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/elements/response-messages.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/elements/responsive-tables.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/elements/ribbon.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/elements/social-box.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/elements/tables.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/elements/tile-box.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/elements/timeline.css"
+    />
+
+    <!-- ICONS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/icons/fontawesome/fontawesome.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/icons/linecons/linecons.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/icons/spinnericon/spinnericon.css"
+    />
+
+    <!-- WIDGETS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/accordion-ui/accordion.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/calendar/calendar.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/carousel/carousel.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/charts/justgage/justgage.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/charts/morris/morris.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/charts/piegage/piegage.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/charts/xcharts/xcharts.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/chosen/chosen.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/colorpicker/colorpicker.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/datatable/datatable.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/datepicker/datepicker.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/datepicker-ui/datepicker.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/daterangepicker/daterangepicker.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/dialog/dialog.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/dropdown/dropdown.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/dropzone/dropzone.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/file-input/fileinput.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/input-switch/inputswitch.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/input-switch/inputswitch-alt.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/ionrangeslider/ionrangeslider.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/jcrop/jcrop.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/jgrowl-notifications/jgrowl.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/loading-bar/loadingbar.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/maps/vector-maps/vectormaps.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/markdown/markdown.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/modal/modal.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/multi-select/multiselect.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/multi-upload/fileupload.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/nestable/nestable.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/noty-notifications/noty.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/popover/popover.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/pretty-photo/prettyphoto.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/progressbar/progressbar.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/range-slider/rangeslider.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/slidebars/slidebars.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/slider-ui/slider.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/summernote-wysiwyg/summernote-wysiwyg.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/tabs-ui/tabs.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/theme-switcher/themeswitcher.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/timepicker/timepicker.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/tocify/tocify.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/tooltip/tooltip.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/touchspin/touchspin.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/uniform/uniform.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/wizard/wizard.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/widgets/xeditable/xeditable.css"
+    />
+
+    <!-- SNIPPETS -->
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/snippets/chat.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/snippets/files-box.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/snippets/login-box.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/snippets/notification-box.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/snippets/progress-box.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/snippets/todo.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/snippets/user-profile.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/snippets/mobile-navigation.css"
+    />
+
+    <!-- APPLICATIONS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/applications/mailbox.css"
+    />
+
+    <!-- Admin theme -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/themes/admin/layout.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/themes/admin/color-schemes/default.css"
+    />
+
+    <!-- Components theme -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/themes/components/default.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/themes/components/border-radius.css"
+    />
+
+    <!-- Admin responsive -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/helpers/responsive-elements.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ pathSite }}design/1/assets/helpers/admin-responsive.css"
+    />
+
+    <!-- JS Core -->
+    <script
+      type="text/javascript"
+      src="{{ pathSite }}design/1/assets/js-core/jquery-core.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{{ pathSite }}design/1/assets/js-core/jquery-ui-core.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{{ pathSite }}design/1/assets/js-core/jquery-ui-widget.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{{ pathSite }}design/1/assets/js-core/jquery-ui-mouse.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{{ pathSite }}design/1/assets/js-core/jquery-ui-position.js"
+    ></script>
+    <!--<script type="text/javascript" src="{{ pathSite }}design/1/assets/js-core/transition.js"></script>-->
+    <script
+      type="text/javascript"
+      src="{{ pathSite }}design/1/assets/js-core/modernizr.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{{ pathSite }}design/1/assets/js-core/jquery-cookie.js"
+    ></script>
+
+    <script type="text/javascript">
+      $(window).load(function () {
+        setTimeout(function () {
+          $("#loading").fadeOut(400, "linear");
+        }, 300);
+      });
+    </script>
+   
+
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/wow/wow.js"></script>
+<script type="text/javascript">
+    /* WOW animations */
+    wow = new WOW({
+        animateClass: 'animated',
+        offset: 100
+    });
+    wow.init();
+</script>
+
+
+
+<!-- jQueryUI Tabs -->
+
+<!--<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/tabs-ui/tabs.css">-->
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/tabs-ui/tabs.js"></script>
+<script type="text/javascript">
+    /* jQuery UI Tabs */
+
+    $(function() { "use strict";
+        $(".tabs").tabs();
+    });
+
+    $(function() { "use strict";
+        $(".tabs-hover").tabs({
+            event: "mouseover"
+        });
+    });
+</script>
+
+<!-- Boostrap Tabs -->
+
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/tabs/tabs.js"></script>
+
+<!-- Tabdrop Responsive -->
+
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/tabs/tabs-responsive.js"></script>
+<script type="text/javascript">
+    /* Responsive tabs */
+    $(function() { "use strict";
+        $('.nav-responsive').tabdrop();
+    });
+</script>
+
+<style>
+.imgCardd{
+  margin:10px auto;
+  border-radius:5px;
+  border: 1px solid #999;
+  padding:13px;
+  width:220px;
+  height:200px;
+  background-size: 100% 100%;
+  background-repeat:no-repeat;
+  background:url(../img/imagen.jpg);
+  background-size: cover;
+  }
+.imgCardd{
+  width: 100%;
+}
+@media all and (min-width: 500px) and (max-width: 1000px)
+{  
+.imgCardd{
+  margin:20px auto;
+  border-radius:5px;
+  border: 1px solid #999;
+  padding:13px;
+  width:300px;
+  height:300px;
+  background-size: 100% 100%;
+  background-repeat:no-repeat;
+  background:url(../img/imagen.jpg);
+  background-size: cover;
+  
+  }
+}
+
+.imgCardd{
+   width:100%;
+}
+
+.card-text{
+  height: 60px;
+  overflow:hidden;
+  margin:10px;
+  font-size:9px;
+}
+
+.card{
+  height:400px;
+}
+</style>
+<!-- jQueryUI Spinner -->
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/spinner/spinner.js"></script>
+<script type="text/javascript">
+    /* jQuery UI Spinner */
+    $(function() { "use strict";
+        $(".spinner-input").spinner();
+    });
+</script>
+
+<!-- jQueryUI Autocomplete -->
+
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/autocomplete/autocomplete.js"></script>
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/autocomplete/menu.js"></script>
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/autocomplete/autocomplete-demo.js"></script>
+
+<!-- Touchspin -->
+
+<!--<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/touchspin/touchspin.css">-->
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/touchspin/touchspin.js"></script>
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/touchspin/touchspin-demo.js"></script>
+
+<!-- Input switch -->
+
+<!--<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/input-switch/inputswitch.css">-->
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/input-switch/inputswitch.js"></script>
+<script type="text/javascript">
+    /* Input switch */
+
+    $(function() { "use strict";
+        $('.input-switch').bootstrapSwitch();
+    });
+</script>
+
+<!-- Textarea -->
+
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/textarea/textarea.js"></script>
+<script type="text/javascript">
+    /* Textarea autoresize */
+
+    $(function() { "use strict";
+        $('.textarea-autosize').autosize();
+    });
+</script>
+
+<!-- Multi select -->
+
+<!--<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/multi-select/multiselect.css">-->
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/multi-select/multiselect.js"></script>
+<script type="text/javascript">
+    /* Multiselect inputs */
+
+    $(function() { "use strict";
+        $(".multi-select").multiSelect();
+        $(".ms-container").append('<i class="glyph-icon icon-exchange"></i>');
+    });
+</script>
+
+<!-- Uniform -->
+
+<!--<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/uniform/uniform.css">-->
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/uniform/uniform.js"></script>
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/uniform/uniform-demo.js"></script>
+
+<!-- Chosen -->
+
+<!--<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/chosen/chosen.css">-->
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/chosen/chosen.js"></script>
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/chosen/chosen-demo.js"></script>
+
+
+
+<!-- Bootstrap Datepicker -->
+
+<!--<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/datepicker/datepicker.css">-->
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/datepicker/datepicker.js"></script>
+<script type="text/javascript">
+    /* Datepicker bootstrap */
+var date = new Date();
+var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+    $(function() { "use strict";
+        $('.bootstrap-datepicker2').datepicker({
+            format: 'yyyy-mm-dd',
+            minDate: today
+        });
+    });
+
+</script>
+
+<!-- jQueryUI Datepicker -->
+
+<!--<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/datepicker-ui/datepicker.css">-->
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/datepicker-ui/datepicker.js"></script>
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/datepicker-ui/datepicker-demo.js"></script>
+
+<!-- Bootstrap Daterangepicker -->
+
+<!--<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/daterangepicker/daterangepicker.css">-->
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/daterangepicker/moment.js"></script>
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/daterangepicker/daterangepicker-demo.js"></script>
+
+<!-- Bootstrap Timepicker -->
+
+<!--<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/timepicker/timepicker.css">-->
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/timepicker/timepicker.js"></script>
+<script type="text/javascript">
+
+    /* Timepicker */
+
+    $(function() { "use strict";
+        $('.timepicker-example').timepicker();
+    });
+</script>
+
+<!-- Colorpicker -->
+
+<!--<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/colorpicker/colorpicker.css">-->
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/colorpicker/colorpicker.js"></script>
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/colorpicker/colorpicker-demo.js"></script>
+
+
+  </head>
+
+  <body class="closed-sidebar">

@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en" class="has-hover no-js">
+<head>
+	<title>{{empresa.empresa}}</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- CSS styles -->
+	<link rel="stylesheet" href="{{ pathSite }}design/{{ design }}/assets/css/main.css">
+
+	<!-- /CSS styles -->
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/bootstrap/css/bootstrap.css">
+
+
+<!-- HELPERS -->
+
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/helpers/animate.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/helpers/backgrounds.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/helpers/boilerplate.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/helpers/border-radius.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/helpers/grid.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/helpers/page-transitions.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/helpers/spacing.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/helpers/typography.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/helpers/utils.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/helpers/colors.css">
+
+<!-- ELEMENTS -->
+
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/elements/badges.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/elements/buttons.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/elements/content-box.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/elements/dashboard-box.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/elements/forms.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/elements/images.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/elements/info-box.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/elements/invoice.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/elements/loading-indicators.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/elements/menus.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/elements/panel-box.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/elements/response-messages.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/elements/responsive-tables.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/elements/ribbon.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/elements/social-box.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/elements/tables.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/elements/tile-box.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/elements/timeline.css">
+
+
+
+<!-- ICONS -->
+
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/icons/fontawesome/fontawesome.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/icons/linecons/linecons.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/icons/spinnericon/spinnericon.css">
+
+
+<!-- WIDGETS -->
+
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/accordion-ui/accordion.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/calendar/calendar.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/carousel/carousel.css">
+
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/charts/justgage/justgage.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/charts/morris/morris.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/charts/piegage/piegage.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/charts/xcharts/xcharts.css">
+
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/chosen/chosen.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/colorpicker/colorpicker.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/datatable/datatable.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/datepicker/datepicker.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/datepicker-ui/datepicker.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/daterangepicker/daterangepicker.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/dialog/dialog.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/dropdown/dropdown.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/dropzone/dropzone.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/file-input/fileinput.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/input-switch/inputswitch.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/input-switch/inputswitch-alt.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/ionrangeslider/ionrangeslider.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/jcrop/jcrop.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/jgrowl-notifications/jgrowl.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/loading-bar/loadingbar.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/maps/vector-maps/vectormaps.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/markdown/markdown.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/modal/modal.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/multi-select/multiselect.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/multi-upload/fileupload.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/nestable/nestable.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/noty-notifications/noty.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/popover/popover.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/pretty-photo/prettyphoto.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/progressbar/progressbar.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/range-slider/rangeslider.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/slidebars/slidebars.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/slider-ui/slider.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/summernote-wysiwyg/summernote-wysiwyg.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/tabs-ui/tabs.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/theme-switcher/themeswitcher.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/timepicker/timepicker.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/tocify/tocify.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/tooltip/tooltip.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/touchspin/touchspin.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/uniform/uniform.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/wizard/wizard.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/xeditable/xeditable.css">
+
+<!-- SNIPPETS -->
+
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/snippets/chat.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/snippets/files-box.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/snippets/login-box.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/snippets/notification-box.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/snippets/progress-box.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/snippets/todo.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/snippets/user-profile.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/snippets/mobile-navigation.css">
+
+<!-- APPLICATIONS -->
+
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/applications/mailbox.css">
+
+<!-- Admin theme -->
+
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/themes/admin/layout.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/themes/admin/color-schemes/default.css">
+
+<!-- Components theme -->
+
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/themes/components/default.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/themes/components/border-radius.css">
+
+<!-- Admin responsive -->
+
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/helpers/responsive-elements.css">
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/helpers/admin-responsive.css">
+
+    <!-- JS Core -->
+
+    <script type="text/javascript" src="{{ pathSite }}design/1/assets/js-core/jquery-core.js"></script>
+    <script type="text/javascript" src="{{ pathSite }}design/1/assets/js-core/jquery-ui-core.js"></script>
+    <script type="text/javascript" src="{{ pathSite }}design/1/assets/js-core/jquery-ui-widget.js"></script>
+    <script type="text/javascript" src="{{ pathSite }}design/1/assets/js-core/jquery-ui-mouse.js"></script>
+    <script type="text/javascript" src="{{ pathSite }}design/1/assets/js-core/jquery-ui-position.js"></script>
+    <!--<script type="text/javascript" src="{{ pathSite }}design/1/assets/js-core/transition.js"></script>-->
+    <script type="text/javascript" src="{{ pathSite }}design/1/assets/js-core/modernizr.js"></script>
+    <script type="text/javascript" src="{{ pathSite }}design/1/assets/js-core/jquery-cookie.js"></script>
+
+
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    {% if empresa.google_analitycs != "" %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{empresa.google_analitycs}}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '{{empresa.google_analitycs}}');
+</script>
+{% endif %}
+
+
+
+</head>
+<body class="shop-design-one"  style="background-color: {{empresa.color}};">
+	<!-- Loader -->
+	<div class="se-pre-con"></div>
+	<!-- /Loader -->
+	<!-- Main -->
+	<main>
+		<!-- Header -->
+		<div class="header animate-top">
+			<!-- Logo -->
+			<div class="logo">                  
+				<a href="freelance-designer.html" title="{{empresa.empresa}}">
+					<img class="visible-desktop" src="{{ getIMG('empresa',empresa.id) }}" alt="logo" title="{{empresa.empresa}}" >
+					<img class="visible-mobile" src="{{ getIMG('empresa',empresa.id) }}" alt="logo" title="{{empresa.empresa}}" >
+				</a>
+			</div>
+			<!-- /Logo -->
+		</div>
+			<!-- /Header -->
+            <input type="hidden" id="path" name="path" value="{{pathSite}}">
+            <input type="hidden" id="idEmpresa" name="idEmpresa" value="{{idEmpresa}}">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/owlcarousel/owlcarousel.css">
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/owlcarousel/owlcarousel.js"></script>
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/owlcarousel/owlcarousel-demo.js"></script>
+
+<div class="panel">
+<div class="panel-body">
+<div>
+<h3 class="title-hero">
+    Owl carousel
+</h3>
+<div class="example-box-wrapper">
+
+    <div class="owl-carousel-1 slider-wrapper carousel-wrapper owl-carousel owl-theme" style="opacity: 1; display: block;">
+
+        <div class="owl-wrapper-outer"><div class="owl-wrapper" style="width: 8496px; left: 0px; display: block; transform: translate3d(-2596px, 0px, 0px); transition: all 200ms ease 0s;"><div class="owl-item" style="width: 236px;"><div>
+            <div class="thumbnail-box">
+                <a class="thumb-link" href="#" title=""></a>
+                <div class="thumb-content">
+                    <div class="center-vertical">
+                        <div class="center-content">
+                            <h3 class="thumb-heading animated bounceIn">
+                                Railroad bridge
+                                <small>12 March 2015</small>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="thumb-overlay bg-primary"></div>
+                <img src="{{ pathSite }}design/1/assets/image-resources/stock-images/img-1.jpg" alt="">
+            </div>
+        </div></div><div class="owl-item" style="width: 236px;"><div>
+            <div class="thumbnail-box">
+                <a class="thumb-link" href="#" title=""></a>
+                <div class="thumb-content">
+                    <div class="center-vertical">
+                        <div class="center-content">
+                            <h3 class="thumb-heading animated rollIn">
+                                Beautiful garden
+                                <small>12 March 2015</small>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="thumb-overlay bg-black"></div>
+                <img src="{{ pathSite }}design/1/assets/image-resources/stock-images/img-2.jpg" alt="">
+            </div>
+        </div></div><div class="owl-item" style="width: 236px;"><div>
+            <div class="thumbnail-box">
+                <a class="thumb-link" href="#" title=""></a>
+                <div class="thumb-content">
+                    <div class="center-vertical">
+                        <div class="center-content">
+                            <h3 class="thumb-heading animated fadeInDown">
+                                Sunrays flowers
+                                <small>12 March 2015</small>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="thumb-overlay bg-primary"></div>
+                <img src="{{ pathSite }}design/1/assets/image-resources/stock-images/img-3.jpg" alt="">
+            </div>
+        </div></div><div class="owl-item" style="width: 236px;"><div>
+            <div class="thumbnail-box">
+                <a class="thumb-link" href="#" title=""></a>
+                <div class="thumb-content">
+                    <div class="center-vertical">
+                        <div class="center-content">
+                            <h3 class="thumb-heading animated flipInX">
+                                Seeing a DJs work
+                                <small>12 March 2015</small>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="thumb-overlay bg-blue"></div>
+                <img src="{{ pathSite }}design/1/assets/image-resources/stock-images/img-4.jpg" alt="">
+            </div>
+        </div></div><div class="owl-item" style="width: 236px;"><div>
+            <div class="thumbnail-box">
+                <div class="thumb-content">
+                    <div class="center-vertical">
+                        <div class="center-content">
+                            <div class="thumb-btn animated bounceInDown">
+                                <a href="#" class="btn btn-md btn-round btn-success" title=""><i class="glyph-icon icon-check"></i></a>
+                                <a href="#" class="btn btn-md btn-round btn-danger" title=""><i class="glyph-icon icon-remove"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="thumb-overlay bg-primary"></div>
+                <img src="{{ pathSite }}design/1/assets/image-resources/stock-images/img-5.jpg" alt="">
+            </div>
+        </div></div><div class="owl-item" style="width: 236px;"><div>
+            <div class="thumbnail-box">
+                <div class="thumb-content">
+                    <div class="center-vertical">
+                        <div class="center-content">
+                            <div class="thumb-btn animated zoomIn">
+                                <a href="#" class="btn btn-lg btn-round btn-success" title=""><i class="glyph-icon icon-check"></i></a>
+                                <a href="#" class="btn btn-lg btn-round btn-danger" title=""><i class="glyph-icon icon-remove"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="thumb-overlay bg-gray"></div>
+                <img src="{{ pathSite }}design/1/assets/image-resources/stock-images/img-6.jpg" alt="">
+            </div>
+        </div></div><div class="owl-item" style="width: 236px;"><div>
+            <div class="thumbnail-box">
+                <div class="thumb-content">
+                    <div class="center-vertical">
+                        <div class="center-content">
+                            <div class="thumb-btn animated rotateIn">
+                                <a href="#" class="btn btn-lg btn-round btn-primary" title=""><i class="glyph-icon icon-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="thumb-overlay bg-black"></div>
+                <img src="{{ pathSite }}design/1/assets/image-resources/stock-images/img-7.jpg" alt="">
+            </div>
+        </div></div><div class="owl-item" style="width: 236px;"><div>
+            <div class="thumbnail-box">
+                <div class="thumb-content">
+                    <div class="center-vertical">
+                        <div class="center-content">
+                            <div class="thumb-btn animated bounceIn">
+                                <a href="#" class="btn btn-xlg btn-round btn-primary" title=""><i class="glyph-icon icon-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="thumb-overlay bg-blue-alt"></div>
+                <img src="{{ pathSite }}design/1/assets/image-resources/stock-images/img-8.jpg" alt="">
+            </div>
+        </div></div><div class="owl-item" style="width: 236px;"><div>
+            <div class="thumbnail-box">
+                <a class="thumb-link" href="#" title=""></a>
+                <div class="thumb-content">
+                    <div class="center-vertical">
+                        <div class="center-content">
+                            <i class="icon-helper icon-center animated zoomInUp font-white glyph-icon icon-linecons-music"></i>
+                        </div>
+                    </div>
+                    <i class="icon-helper icon-br animated bounceInDown bg-danger glyph-icon icon-plus"></i>
+                </div>
+                <div class="thumb-overlay bg-primary"></div>
+                <img src="{{ pathSite }}design/1/assets/image-resources/stock-images/img-9.jpg" alt="">
+            </div>
+        </div></div><div class="owl-item" style="width: 236px;"><div>
+            <div class="thumbnail-box">
+                <a class="thumb-link" href="#" title=""></a>
+                <div class="thumb-content">
+                    <div class="center-vertical">
+                        <div class="center-content">
+                            <i class="icon-helper icon-center animated pulse font-white glyph-icon icon-linecons-search"></i>
+                        </div>
+                    </div>
+                    <i class="icon-helper icon-tr animated rotateIn bg-green glyph-icon icon-plus"></i>
+                </div>
+                <div class="thumb-overlay bg-danger"></div>
+                <img src="{{ pathSite }}design/1/assets/image-resources/stock-images/img-10.jpg" alt="">
+            </div>
+        </div></div><div class="owl-item" style="width: 236px;"><div>
+            <div class="thumbnail-box">
+                <a class="thumb-link" href="#" title=""></a>
+                <div class="thumb-content">
+                    <div class="center-vertical">
+                        <div class="center-content">
+                            <i class="icon-helper icon-center animated swing font-white glyph-icon icon-linecons-location"></i>
+                        </div>
+                    </div>
+                    <i class="icon-helper icon-bl animated zoomIn bg-black glyph-icon icon-plus"></i>
+                </div>
+                <div class="thumb-overlay bg-azure"></div>
+                <img src="{{ pathSite }}design/1/assets/image-resources/stock-images/img-11.jpg" alt="">
+            </div>
+        </div></div><div class="owl-item" style="width: 236px;"><div>
+            <div class="thumbnail-box">
+                <a class="thumb-link" href="#" title=""></a>
+                <div class="thumb-content">
+                    <div class="center-vertical">
+                        <div class="center-content">
+                            <i class="icon-helper icon-center animated rotateIn font-white glyph-icon icon-linecons-camera"></i>
+                        </div>
+                    </div>
+                    <i class="icon-helper icon-tl animated fadeIn bg-black glyph-icon icon-plus"></i>
+                </div>
+                <div class="thumb-overlay bg-black"></div>
+                <img src="{{ pathSite }}design/1/assets/image-resources/stock-images/img-12.jpg" alt="">
+            </div>
+        </div></div><div class="owl-item" style="width: 236px;"><div>
+            <div class="thumbnail-box thumbnail-box-inverse">
+                <a class="thumb-link" href="#" title=""></a>
+                <div class="thumb-content">
+                    <div class="center-vertical">
+                        <div class="center-content">
+                            <h3 class="thumb-heading animated bounceIn">
+                                Cookie monsters
+                                <small>12 March 2015</small>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="thumb-overlay bg-black"></div>
+                <img src="{{ pathSite }}design/1/assets/image-resources/stock-images/img-13.jpg" alt="">
+            </div>
+        </div></div><div class="owl-item" style="width: 236px;"><div>
+            <div class="thumbnail-box thumbnail-box-inverse">
+                <a class="thumb-link" href="#" title=""></a>
+                <div class="thumb-content">
+                    <div class="center-vertical">
+                        <div class="center-content">
+                            <i class="icon-helper icon-center animated zoomInUp font-white glyph-icon icon-linecons-music"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="thumb-overlay bg-primary"></div>
+                <img src="{{ pathSite }}design/1/assets/image-resources/stock-images/img-14.jpg" alt="">
+            </div>
+        </div></div><div class="owl-item" style="width: 236px;"><div>
+            <div class="thumbnail-box thumbnail-box-inverse">
+                <a class="thumb-link" href="#" title=""></a>
+                <div class="thumb-content">
+                    <div class="center-vertical">
+                        <div class="center-content">
+                            <h3 class="thumb-heading animated rollIn">
+                                Tables at work
+                                <small>12 March 2015</small>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="thumb-overlay bg-orange"></div>
+                <img src="{{ pathSite }}design/1/assets/image-resources/stock-images/img-15.jpg" alt="">
+            </div>
+        </div></div><div class="owl-item" style="width: 236px;"><div>
+            <div class="thumbnail-box thumbnail-box-inverse">
+                <a class="thumb-link" href="#" title=""></a>
+                <div class="thumb-content">
+                    <div class="center-vertical">
+                        <div class="center-content">
+                            <i class="icon-helper icon-center animated rotateIn font-white glyph-icon icon-linecons-camera"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="thumb-overlay bg-blue-alt"></div>
+                <img src="{{ pathSite }}design/1/assets/image-resources/stock-images/img-16.jpg" alt="">
+            </div>
+        </div></div><div class="owl-item" style="width: 236px;"><div>
+            <div class="thumbnail-box thumbnail-box-inverse">
+                <a class="thumb-link" href="#" title=""></a>
+                <div class="thumb-content">
+                    <div class="center-vertical">
+                        <div class="center-content">
+                            <i class="icon-helper icon-center animated rotateIn font-white glyph-icon icon-linecons-camera"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="thumb-overlay bg-blue-alt"></div>
+                <img src="{{ pathSite }}design/1/assets/image-resources/stock-images/img-21.jpg" alt="">
+            </div>
+        </div></div><div class="owl-item" style="width: 236px;"><div>
+            <div class="thumbnail-box thumbnail-box-inverse">
+                <a class="thumb-link" href="#" title=""></a>
+                <div class="thumb-content">
+                    <div class="center-vertical">
+                        <div class="center-content">
+                            <i class="icon-helper icon-center animated rotateIn font-white glyph-icon icon-linecons-camera"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="thumb-overlay bg-blue-alt"></div>
+                <img src="{{ pathSite }}design/1/assets/image-resources/stock-images/img-22.jpg" alt="">
+            </div>
+        </div></div></div></div>
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+    <div class="owl-controls clickable"><div class="owl-pagination"><div class="owl-page"><span class=""></span></div><div class="owl-page"><span class=""></span></div><div class="owl-page active"><span class=""></span></div><div class="owl-page"><span class=""></span></div><div class="owl-page"><span class=""></span></div></div><div class="owl-buttons"><div class="owl-prev"><i class="glyph-icon icon-angle-left"></i></div><div class="owl-next"><i class="glyph-icon icon-angle-right"></i></div></div></div></div>
+</div>
+</div>
+</div>
+</div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<!-- Banner -->
+			<div class="banner panel-bg">
+
+
+
+				<!-- Portfolio Thumbnails -->
+				<div class="portfolio-thumbnail flex-row" data-aos="fade-down" data-aos-once="true">
+				
+				</div>
+				<!-- /Portfolio Thumbnails -->
+
+
+				<!-- Tab Content -->
+                <div class="row">
+                
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                    <div class="tab-content" data-aos="fade-up" data-aos-once="true">
+                        <!-- Posters Tab -->
+                        {% for keyx, value in categorias %}
+                        <div role="tabpanel" class="tab-pane" id="{{value.categoria}}">
+                            <!-- Sub Content -->
+                            <div class="sub-content">
+                                <!-- Shop Wrapper -->
+                                <div class="shop-wrapper">
+                                    <div class="container">
+                                        <div class="row">
+                                            {% for key1, value1 in productos %}
+                                            {% if value.id == value1.categoria_id %}
+                                                <div class="col-6 col-sm-6 col-xs-6 col-md-6 col-lg-3">
+                                                    <!-- Shop Outer Layer -->
+                                                    <div class="shop-outer-layer">
+                                                        <!-- Product Title -->
+                                                        <div class="product-title">
+                                                            <h3>{{value1.producto}}</h3>
+                                                            <div class="border-line"></div>
+                                                        </div>
+                                                        <!-- /Product Title -->
+                                                        <!-- Product Image -->
+                                                        <div class="product-image">
+                                                            <img src="{{ getIMG('producto',value1.id,value1.url_imagen) }}" class="img-fluid" alt="Stencil" title="Shop">
+                                                        </div>
+                                                        <!-- /Product Image -->
+                                                        <!-- Product Price -->
+                                                        <div class="product-price">
+                                                            <p>${{value1.precio_venta}}</p>
+                                                        </div>
+                                                        <!-- /Product Price -->
+                                                        <!-- Add Quantity -->
+                                                        <div class="add-qty">
+                                                            <button class="add-qty-btn" title="Add To Cart" value="">
+                                                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                                            </button>
+                                                        </div>
+                                                        <!-- Add Quantity -->
+                                                        <!-- Overlay product -->
+                                                        <div class="overlay-product">
+                                                            <div class="overlay-text">
+                                                                <div class="product-image">
+                                                                    <img src="{{ getIMG('producto',value1.id,value1.url_imagen) }}" class="img-fluid" alt="Stencil" title="Shop">
+                                                                </div>
+                                                                <p>
+                                                                    {% for key2, val2 in unidades %}
+                                                                    {%if val2.id == value1.unidad_medida_id %}
+                                                                    {{val2.unidad_medida}}
+                                                                    {% endif %}
+                                                                    {% endfor %}
+                                                                    <hr>
+                                                                </p>
+                                                                <div class="product-style shop-detail-one">
+                                                                    <div class="input-group plus-minus-input ajaxcart__qty" style="left:0;">
+                                                                        <div class="input-group-button">
+                                                                            <button type="button" class="button hollow circle qty-minus" data-quantity="minus" data-field="quantity_{{value1.id}}">
+                                                                                <i class="fa fa-minus" aria-hidden="true"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                        <input class="input-group-field qty" type="number" name="quantity_{{value1.id}}" id="quantity_{{value1.id}}" value="1">
+                                                                        <div class="input-group-button"> 
+                                                                            <button type="button" class="button hollow circle qty-plus" data-quantity="plus" data-field="quantity_{{value1.id}}">
+                                                                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!--<p style="font-size: 5px;">{{value1.descripcion}}</p>-->
+                                                                <button title="Agregar al carrito" class="more-info sm-lg-info addProducto" data-id="{{value1.id}}" >Agregar</button>
+                                                                <button title="Agregar al carrito" class="more-info sm-md-info addProducto" data-id="{{value1.id}}" >Agregar</button>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /Overlay product -->
+                                                    </div>
+                                                    <!-- /Shop Outer Layer -->
+                                                </div>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /Shop Wrapper -->
+                            </div>
+                            <!-- /Sub Content -->
+                        </div>
+                        {% endfor %}
+                        <!-- /Posters Tab -->
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
+                    <!-- Cart txt -->
+                    <div class="cart-txt aos-init aos-animate" data-aos="fade-left" data-aos-once="true">
+                        <h1>Pedido</h1>
+                        <hr>
+                            <h3>Nombre</h3>
+                            <input type="text" class="form-control" name="txtName" id="txtName">
+                            <h3>Teléfono</h3>
+                           <input type="phone" class="form-control" name="txtPhone" id="txtPhone">
+                           <h3>E-mail</h3>
+                           <input type="email" class="form-control" name="txtEmail" id="txtEmail">
+                           <h3>Dirección</h3>
+                           <input type="phone" class="form-control" name="txtDireccion" id="txtDireccion">
+                           
+                           <h3>Nota</h3>
+                            <textarea class="form-control" row="3" name="txtNota" id="txtNota"></textarea>
+                           <hr>
+                        <!-- Payment Method -->
+                       
+                        <div id="capaPedido">
+
+                        </div>
+                        <!-- Payment Method -->
+                    </div>
+                    <!-- /Cart txt -->
+                </div>
+            </div>
+				<!-- /Tab Content -->	
+			</div>
+			<!-- /Banner -->
+		</main>
+		<!-- /Main -->
+
+        {% include 'includesHome/footerJS.html' %}
+
+
+
+
+
+    <!-- WIDGETS -->
+
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/bootstrap/js/bootstrap.js"></script>
+
+<!-- Bootstrap Dropdown -->
+
+<!-- <script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/dropdown/dropdown.js"></script> -->
+
+<!-- Bootstrap Tooltip -->
+
+<!-- <script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/tooltip/tooltip.js"></script> -->
+
+<!-- Bootstrap Popover -->
+
+<!-- <script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/popover/popover.js"></script> -->
+
+<!-- Bootstrap Progress Bar -->
+
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/progressbar/progressbar.js"></script>
+
+<!-- Bootstrap Buttons -->
+
+<!-- <script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/button/button.js"></script> -->
+
+<!-- Bootstrap Collapse -->
+
+<!-- <script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/collapse/collapse.js"></script> -->
+
+<!-- Superclick -->
+
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/superclick/superclick.js"></script>
+
+<!-- Input switch alternate -->
+
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/input-switch/inputswitch-alt.js"></script>
+
+<!-- Slim scroll -->
+
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/slimscroll/slimscroll.js"></script>
+
+<!-- Slidebars -->
+
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/slidebars/slidebars.js"></script>
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/slidebars/slidebars-demo.js"></script>
+
+<!-- PieGage -->
+
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/charts/piegage/piegage.js"></script>
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/charts/piegage/piegage-demo.js"></script>
+
+<!-- Screenfull -->
+
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/screenfull/screenfull.js"></script>
+
+<!-- Content box -->
+
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/content-box/contentbox.js"></script>
+
+<!-- Overlay -->
+
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/overlay/overlay.js"></script>
+
+<!-- Widgets init for demo -->
+
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/js-init/widgets-init.js"></script>
+
+<!-- Theme layout -->
+
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/themes/admin/layout.js"></script>
+
+<!-- Theme switcher -->
+
+<script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/theme-switcher/themeswitcher.js"></script>
+
+       
+	</body>
+	</html>
