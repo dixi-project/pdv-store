@@ -144,34 +144,6 @@ class Viewy {
             $mandarData['titulo']= $this->title." | ".ucfirst(strtolower($titulo));
         }
         
-        // --> Todos los permisos del rol
-        $mandarData['permisosRol']=indexModel::bd($this->conf)->getSQL("SELECT * FROM permisos WHERE rol_id=".$idRol);
-        //var_dump($mandarData['permisosRol']);
-        // --> obtener modulo actual
-        $sslq1="SELECT id FROM modulo WHERE tabla = '{$dominio}'";
-        //echo $sslq1."<br>";
-        $modulo=(object) indexModel::bd($this->conf)->getSQL($sslq1)[0];
-        // --> obtener permisos
-        $sslq="SELECT * FROM permisos WHERE rol_id=".$idRol." AND modulo_id = ".$modulo->id;
-        //echo $sslq;
-        $permisos= (object) indexModel::bd($this->conf)->getSQL($sslq)[0];
-        $mandarData['permissionCreate'] = $permisos->permiso_crear_id;
-        $mandarData['permissionRead'] = $permisos->permiso_leer_id;
-        $mandarData['permissionUpdate'] = $permisos->permiso_actualizar_id;
-        $mandarData['permissionDelete'] = $permisos->permiso_borrar_id;
-
-        //var_dump($mandarData['permisosRol']);
-        $bus=array(
-            "tipo_menu_id"=>2
-        );
-        $mandarData['menu']=indexModel::bd($this->conf)->getDominioID("menu",$bus);
-        asort($mandarData['menu']);
-        $bus=array(
-            "tipo_menu_id"=>1
-        );
-        $mandarData['menu2']=indexModel::bd($this->conf)->getDominioID("menu",$bus);
-        asort($mandarData['menu2']);
-
 
 // --> Cuentas
         /*
