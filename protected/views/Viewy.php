@@ -258,6 +258,9 @@ class Viewy {
     }
 
     private function getImagen($path,$idImagen,$imgExt="") {
+        if($imgExt!=""){
+            return $imgExt;
+        }
         $types = array("jpg", "png", "gif","jpeg");
         foreach ($types as $key => $value) {
             $img = $this->pathCMSSite . "includes/images/".$path."/" . $idImagen . "." . $value;
@@ -267,9 +270,7 @@ class Viewy {
                 return $img;
             }
         }
-        if($imgExt!=""){
-            return $imgExt;
-        }
+        
         if($path=="categoria"){
             return $this->pathCMSSite . "includes/img/Productos.png";
         }
