@@ -1,4 +1,4 @@
- {% include 'includesHome/header.twig' %}
+{% include 'includesHome/header.twig' %}
 <input type="hidden" id="path" name="path" value="{{pathSite}}">
 <input type="hidden" id="idEmpresa" name="idEmpresa" value="{{idEmpresa}}">
 <div class="sb-site">
@@ -10,99 +10,97 @@
         </div>
     </div>
     <div class="page-wrapper">
-        <img src="{{ pathSite }}design/1/assets/image-resources/blurred-bg/blurred-bg-1.jpg" class="login-img wow fadeIn" alt="">
+        <img src="{{ pathSite }}design/1/assets/image-resources/blurred-bg/blurred-bg-1.jpg"
+            class="login-img wow fadeIn" alt="">
         <div class="page-content-wrapper">
             <div class="page-content">
-               
-                    <div class="profile-box content-box">
-                        <div class="content-box-header clearfix bg-black">
-                            <img src="{{ getIMG('empresa',empresa.id) }}" width="54" alt="" class="img-circle">
-                            <div class="user-details">
-                                {{empresa.empresa}}
-                                <span>{{empresa.telefono}}</span>
-                                <div class="header-buttons-separator">
-                                    <a href="#" class="icon-separator">
-                                        <i class="glyph-icon icon-facebook"></i>
-                                    </a>
-                                    <a href="#" class="icon-separator">
-                                        <i class="glyph-icon icon-twitter"></i>
-                                    </a>
-                                    <a href="#" class="icon-separator">
-                                        <i class="glyph-icon icon-linkedin"></i>
-                                    </a>
-                                </div>
+
+                <div class="profile-box content-box">
+                    <div class="content-box-header clearfix bg-black">
+                        <img src="{{ getIMG('empresa',empresa.id) }}" width="54" alt="" class="img-circle">
+                        <div class="user-details">
+                            {{empresa.empresa}}
+                            <span>{{empresa.telefono}}</span>
+                            <div class="header-buttons-separator">
+                                <a href="#" class="icon-separator">
+                                    <i class="glyph-icon icon-facebook"></i>
+                                </a>
+                                <a href="#" class="icon-separator">
+                                    <i class="glyph-icon icon-twitter"></i>
+                                </a>
+                                <a href="#" class="icon-separator">
+                                    <i class="glyph-icon icon-linkedin"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <link rel="stylesheet" type="text/css" href="{{ pathSite }}design/1/assets/widgets/owlcarousel/owlcarousel.css" />
-                    <script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/owlcarousel/owlcarousel.js"></script>
-                    <script type="text/javascript" src="{{ pathSite }}design/1/assets/widgets/owlcarousel/owlcarousel-demo.js"></script>
+                <link rel="stylesheet" type="text/css"
+                    href="{{ pathSite }}design/1/assets/widgets/owlcarousel/owlcarousel.css" />
+                <script type="text/javascript"
+                    src="{{ pathSite }}design/1/assets/widgets/owlcarousel/owlcarousel.js"></script>
+                <script type="text/javascript"
+                    src="{{ pathSite }}design/1/assets/widgets/owlcarousel/owlcarousel-demo.js"></script>
 
-             
+
                 <div class="row" style="position:relative">
                     <div class="col-md-12" style="background-color: white;">
+                        <!--
                         <nav>
-                            <div class="nav nav-tabs" id="nav-tab" role="tablist" style="visibility:hidden">
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist" >
 
                                 {% set cc=0%} {% for keyx, value in categorias %} {% if cc == 0 %} {% set active='active'%} {% set cc=1%} {% endif %}
                                 <a class="nav-item nav-link {{active}}" id="nav-{{value.id}}-tab" data-toggle="tab" href="#nav-{{value.id}}" role="tab" aria-controls="nav-{{value.id}}" aria-selected="true">{{value.categoria}}</a> {% endfor %}
                             </div>
                         </nav>
-                        <div class="col-md-9" style="border-radius: 5px;
-                        border: 1px solid #999;">
-                            <div>
-                                <div class="example-box-wrapper">
-                                    <div class="owl-carousel-1 slider-wrapper carousel-wrapper">
-                                        {% for keyx, value in categorias %}
-                                        <div>
-                                            <div class="thumbnail-box categoriasTab" data-id="{{value.id}}">
-                                                <div class="thumb-content">
-                                                    <div class="center-vertical">
-                                                        <div class="center-content">
-                                                            <h3 class="thumb-heading animated flipInX">
-                                                                {{value.categoria}}
+-->
+                        <ul class="nav nav-tabs" role="tablist">
+                            {% set cc=0%}
+                            {% for keyx, value in categorias %}
+                            {% set active=''%}
+                            {% if cc == 0 %}
+                            {% set active='active'%}
+                            {% set cc=1%}
+                            {% endif %}
+                            <li role="presentation" class="{{active}}"><a href="#tab{{value.id}}"
+                                    aria-controls="tab{{value.id}}" role="tab" data-toggle="tab">{{value.categoria}}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
 
-                                                                <small>...</small>
-                                                            </h3>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="thumb-overlay bg-blue"></div>
-                                                <img src="{{ getIMG('categoria',value.id) }}" alt="" />
-                                            </div>
-                                        </div>
-                                        {% endfor %}
+                        <div class="col-md-9" style="border-radius: 5px; border: 1px solid #999;">
 
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                            <div class="tab-content" id="nav-tabContent">
-
-
-
-                                {% set cc=0%} {% for keyx, value in categorias %} {% if cc == 0 %} {% set active='active'%} {% set cc=1%} {% endif %}
-                                <div class="tab-pane fade show {{active}}" id="nav-{{value.id}}" role="tabpanel" aria-labelledby="nav-{{value.id}}-tab">
+                            <div class="tab-content">
+                                {% set cc=0%}
+                                {% for keyx, value in categorias %}
+                                {% set active=''%}
+                                {% if cc == 0 %}
+                                {% set active=' active'%}
+                                {% set cc=1%}
+                                {% endif %}
+                                <div role="tabpanel" class="tab-pane {{active}}" id="tab{{value.id}}">
                                     {% for key1, value1 in productos %} {% if value.id == value1.categoria_id %}
                                     <div class="col-6 col-sm-6 col-xs-6 col-md-6 col-lg-3 panel-content">
                                         <div class="card ">
                                             <div class="box">
-                                                <img src="{{ getIMG('producto',value1.id,value1.url_imagen) }}" class="imgCardd" alt="...">
+                                                <img src="{{ getIMG('producto',value1.id,value1.url_imagen) }}"
+                                                    class="imgCardd" alt="...">
                                             </div>
                                             <div class="card-body ">
                                                 <h5 class="card-title"><b>{{value1.producto}}</b></h5>
                                                 <h6 class="card-title">{{value1.precio_venta}}</h6>
                                                 <p class="card-text">{{value1.descripcion}}</p>
                                                 <div class=" bg-white">
-                                                    <input id="quantity_{{value1.id}}" class="form-control touchspin-demo-4" type="text" value="1" name="quantity_{{value1.id}}">
+                                                    <input id="quantity_{{value1.id}}"
+                                                        class="form-control touchspin-demo-4" type="text" value="1"
+                                                        name="quantity_{{value1.id}}">
                                                     <br>
-                                                    <button class="btn btn-alt btn-hover btn-black addProducto" data-id="{{value1.id}}">
-                                                      <span>Agregar</span>
-                                                      <i class="glyph-icon icon-plus"></i>
-                                                  </button>
+                                                    <button class="btn btn-alt btn-hover btn-black addProducto"
+                                                        data-id="{{value1.id}}">
+                                                        <span>Agregar</span>
+                                                        <i class="glyph-icon icon-plus"></i>
+                                                    </button>
                                                 </div>
 
                                             </div>
@@ -111,7 +109,6 @@
                                     {% endif %} {% endfor %}
                                 </div>
                                 {% endfor %}
-
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -126,7 +123,8 @@
                             <h3>Teléfono</h3>
                             <input type="phone" class="form-control" name="txtPhone" id="txtPhone">
                             <h3>Fecha entrega</h3>
-                            <input type="text" class="bootstrap-datepicker2 form-control" value="{{hoy}}" data-date-format="yyyy-mm-dd" name="txtFec" id="txtFec">
+                            <input type="text" class="bootstrap-datepicker2 form-control" value="{{hoy}}"
+                                data-date-format="yyyy-mm-dd" name="txtFec" id="txtFec">
                             <h3>Dirección</h3>
                             <input type="phone" class="form-control" name="txtDireccion" id="txtDireccion">
 
@@ -144,13 +142,15 @@
 </div>
 {% include 'includesHome/footer.twig' %}
 <script>
-    $(".addProducto").click(function() {
+    $(".addProducto").click(function ()
+    {
         var idProducto = $(this).attr("data-id");
         var actionS = "add";
         pedido(idProducto, actionS);
     });
 
-    function pedido(idProducto, actionS) {
+    function pedido(idProducto, actionS)
+    {
         var cantidad = $("#quantity_" + idProducto).val();
         var path = $("#path").val();
         var idEmpresa = $("#idEmpresa").val();
