@@ -10,26 +10,26 @@
         </div>
     </div>
     <div class="page-wrapper">
-        <img src="{{ pathSite }}design/1/assets/image-resources/blurred-bg/blurred-bg-1.jpg"
-            class="login-img wow fadeIn" alt="">
         <div class="page-content-wrapper">
             <div class="page-content">
-
+                <img src="{{pathSite}}includes/images/portadas/descarga.jpg" alt="imagen" height="120" width="1200">
+            </div>
                 <div class="profile-box content-box">
-                    <div class="content-box-header clearfix bg-black">
-                        <img src="{{ getIMG('empresa',empresa.id) }}" width="54" alt="" class="img-circle">
+                    <div class="content-box-header clearfix bg-green">
+                        <img src="{{ getIMG('empresa',empresa.id) }}" width="40" height="40" alt="url_imagen" class="img-circle">
                         <div class="user-details">
                             {{empresa.empresa}}
                             <span>{{empresa.telefono}}</span>
-                            <div class="header-buttons-separator">
-                                <a href="#" class="icon-separator">
-                                    <i class="glyph-icon icon-facebook"></i>
+                        </div>
+                            <div class="header-buttons-separator img-circle">
+                                <a href="https://www.facebook.com" class="icon-separator img-circle" alt="icon-facebook" target="_blank" rel="noopener">
+                                    <i class="glyph-icon icon-facebook" style="color: blue;"></i>
                                 </a>
-                                <a href="#" class="icon-separator">
-                                    <i class="glyph-icon icon-twitter"></i>
+                                <a href="https://twitter.com" class="icon-separator img-circle" target="_blank" rel="noopener">
+                                    <i class="glyph-icon icon-twitter" style="color: rgb(1, 178, 248);"></i>
                                 </a>
-                                <a href="#" class="icon-separator">
-                                    <i class="glyph-icon icon-linkedin"></i>
+                                <a href="https://www.linkedin.com/login/es" class="icon-separator img-circle" target="_blank" rel="noopener">
+                                    <i class="glyph-icon icon-linkedin" style="color: rgb(66, 66, 175);"></i>
                                 </a>
                             </div>
                         </div>
@@ -46,7 +46,31 @@
 
                 <div class="row" style="position:relative">
                     <div class="col-md-12" style="background-color: white;">
-                        <!--
+                        <ul>
+                            <input id="search" type="search" name="Busqueda" placeholder="Buscar productos">
+                                     <a class="items-center">
+                                        <input type="submit" value="Buscar" class="mb-sm btn btn-success">     
+                                
+                                <span><a href="#tab{{value.id}}" aria-current="page">
+                                        <span  class="uppercase font-normal relative">
+                                         <input type="submit" value="🏷️Ofertas" name="Ofertas" class="mb-sm btn btn-success"> 
+                                        
+                                        <span><a  href="#tab{{value.id}}" aria-current="page" >
+                                    <span  class="uppercase font-normal relative">
+                                        <input type="submit" value="Frutas" name="Frutas" class="mb-sm btn btn-success"> 
+                                    
+                                <span><a  href="#tab{{value.id}}" aria-current="page" >
+                                    <span  class="uppercase font-normal relative">
+                                        <input type="submit" value="Vegetales" name="Vegetales" class="mb-sm btn btn-success"> 
+                                    
+                                <span><a  href="#tab{{value.id}}" aria-current="page" >
+                                    <span  class="uppercase font-normal relative">
+                                        <input type="submit" value="Otros" name="Otros" class="mb-sm btn btn-success">   
+                                </a>
+                            </span>
+                        </ul> 
+                    </div>
+                </div>
                         <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist" >
 
@@ -54,7 +78,7 @@
                                 <a class="nav-item nav-link {{active}}" id="nav-{{value.id}}-tab" data-toggle="tab" href="#nav-{{value.id}}" role="tab" aria-controls="nav-{{value.id}}" aria-selected="true">{{value.categoria}}</a> {% endfor %}
                             </div>
                         </nav>
--->
+
                         <ul class="nav nav-tabs" role="tablist">
                             {% set cc=0%}
                             {% for keyx, value in categorias %}
@@ -69,7 +93,52 @@
                             {% endfor %}
                         </ul>
 
-                        <div class="col-md-9" style="border-radius: 5px; border: 1px solid #999;">
+                        <div class="col-md-9" style="border-radius: 5px; border: 1px solid black;">
+                            <div class="col-6 col-sm-6 col-xs-6 col-md-6 col-lg-3 panel-content">
+                                <div class="card ">
+                                    <div class="box">
+                                        <img src="{{pathSite}}includes/images/productos/dz.jpg"
+                                            class="imgCardd" alt="...">
+                                            <h5 class="card-title"><b>GFGSGDSGFS</b></h5>
+                                              <h6 class="card-title">SGGDFGFN F FSD</h6>
+                                                <p class="card-text">UTIYTYYYTR</p>
+</div>
+</div>
+<div class="card-body ">
+    <img src="{{pathSite}}includes/images/productos/images.jpg" alt="imagen" height="100" width="100" BORDER="1">
+    <h5 class="card-title"><b>GFGSGDSGFS</b></h5>
+    <h6 class="card-title">SGGDFGFN F FSD</h6>
+    <p class="card-text">UTIYTYYYTR</p>
+</div>
+</div>
+<div class="card-body ">
+    <img src="{{pathSite}}includes/images/productos/pt.jpg" alt="imagen" height="100" width="100" BORDER="1">
+    <h5 class="card-title"><b>GFGSGDSGFS</b></h5>
+    <h6 class="card-title">SGGDFGFN F FSD</h6>
+    <p class="card-text">UTIYTYYYTR</p>
+</div>
+<div class="card-body ">
+    <img src="{{pathSite}}includes/images/productos/lp.jpg" alt="imagen" height="100" width="100" BORDER="1">
+    <h5 class="card-title"><b>GFGSGDSGFS</b></h5>
+    <h6 class="card-title">SGGDFGFN F FSD</h6>
+    <p class="card-text">UTIYTYYYTR</p>
+</div> 
+<div class="col-6 col-sm-6 col-xs-6 col-md-6 col-lg-3 panel-content"></div>
+<div class="card-body ">
+    <img src="{{pathSite}}includes/images/productos/jk.jpg" alt="imagen" height="100" width="100" BORDER="1">
+    <h5 class="card-title"><b>GFGSGDSGFS</b></h5>
+    <h6 class="card-title">SGGDFGFN F FSD</h6>
+    <p class="card-text">UTIYTYYYTR</p>
+</div>
+<div class="card-body ">
+    <img src="{{pathSite}}includes/images/productos/fp.jpg" alt="imagen" height="100" width="100" BORDER="1">
+    <h5 class="card-title"><b>GFGSGDSGFS</b></h5>
+    <h6 class="card-title">SGGDFGFN F FSD</h6>
+    <p class="card-text">UTIYTYYYTR</p>
+</div>
+</div></div></div></div>
+
+
 
                             <div class="tab-content">
                                 {% set cc=0%}
@@ -96,10 +165,10 @@
                                                         class="form-control touchspin-demo-4" type="text" value="1"
                                                         name="quantity_{{value1.id}}">
                                                     <br>
-                                                    <button class="btn btn-alt btn-hover btn-black addProducto"
+                                                    <button class="btn btn-alt  btn-black addProducto"
                                                         data-id="{{value1.id}}">
                                                         <span>Agregar</span>
-                                                        <i class="glyph-icon icon-plus"></i>
+                                                        <input id="quantity_7" class="form-control touchspin-demo-4" type="text" value="1" name="quantity_7" style="display: block;">
                                                     </button>
                                                 </div>
 
