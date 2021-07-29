@@ -11,6 +11,7 @@ class ControllerIndex extends Controller {
         $dd=explode("/",$con);
         $uu = $dd[0];
         $ss="SELECT * FROM empresa WHERE url_tienda='{$uu}'";
+
         $this->data["empresa"] = (object) indexModel::bd($this->conf)->getSQL($ss)[0];
         $this->data["idEmpresa"]=$this->data["empresa"]->id;
         $vv = array(
@@ -21,8 +22,9 @@ class ControllerIndex extends Controller {
         //asort($this->data["categorias"]);
         //var_dump($this->data["categorias"] );
         $this->data["productos"] = indexModel::bd($this->conf)->getDominioID("producto",$vv);
+       //var_dump($this->data["productos"]);
         $this->data["unidades"] = indexModel::bd($this->conf)->getDominioID("unidad_medida");
-        $template="plantilla5.html";
+        $template="plantilla1.html";
          
         $this->view->show($template, $this->data, $this->accion);
     }

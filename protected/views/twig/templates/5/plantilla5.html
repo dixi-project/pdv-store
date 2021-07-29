@@ -74,7 +74,12 @@
                         <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist" >
 
-                                {% set cc=0%} {% for keyx, value in categorias %} {% if cc == 0 %} {% set active='active'%} {% set cc=1%} {% endif %}
+                                {% set cc=0%} 
+                                {% for keyx, value in categorias %} 
+                                {% if cc == 0 %} 
+                                {% set active='active'%} 
+                                {% set cc=1%} 
+                                {% endif %}
                                 <a class="nav-item nav-link {{active}}" id="nav-{{value.id}}-tab" data-toggle="tab" href="#nav-{{value.id}}" role="tab" aria-controls="nav-{{value.id}}" aria-selected="true">{{value.categoria}}</a> {% endfor %}
                             </div>
                         </nav>
@@ -119,7 +124,8 @@
                                 {% set cc=1%}
                                 {% endif %}
                                 <div role="tabpanel" class="tab-pane {{active}}" id="tab{{value.id}}">
-                                    {% for key1, value1 in productos %} {% if value.id == value1.categoria_id %}
+                                    {% for key1, value1 in productos %} 
+                                    {% if value.id == value1.categoria_id %}
                                     <div class="col-6 col-sm-6 col-xs-6 col-md-6 col-lg-3 panel-content">
                                         <div class="card ">
                                             <div class="box">
@@ -145,7 +151,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {% endif %} {% endfor %}
+                                    {% endif %} 
+                                    {% endfor %}
                                 </div>
                                 {% endfor %}
                             </div>

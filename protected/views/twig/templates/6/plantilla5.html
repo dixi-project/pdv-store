@@ -1,0 +1,219 @@
+{% include 'includesHome/header.html' %}
+<input type="hidden" id="path" name="path" value="{{pathSite}}">
+<input type="hidden" id="idEmpresa" name="idEmpresa" value="{{idEmpresa}}">
+<div class="sb-site">
+    <div id="loading">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+    <div class="page-wrapper">
+        <div class="page-content-wrapper">
+            <div class="page-content">
+                <img src="{{pathSite}}includes/images/portadas/descarga.jpg" alt="imagen" height="120" width="1200">
+            </div>
+                <div class="profile-box content-box">
+                    <div class="content-box-header clearfix bg-green">
+                        <img src="{{ getIMG('empresa',empresa.id) }}" width="40" height="40" alt="url_imagen" class="img-circle">
+                        <div class="user-details">
+                            {{empresa.empresa}}
+                            <span>{{empresa.telefono}}</span>
+                        </div>
+                            <div class="header-buttons-separator ">
+                                <a href="https://www.facebook.com" class="icon-separator img-circle" alt="icon-facebook" target="_blank" rel="noopener">
+                                    <i class="glyph-icon icon-facebook" style="color: blue;"></i>
+                                </a>
+                                <a href="https://twitter.com" class="icon-separator img-circle" target="_blank" rel="noopener">
+                                    <i class="glyph-icon icon-twitter" style="color: rgb(1, 178, 248);"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/login/es" class="icon-separator img-circle" target="_blank" rel="noopener">
+                                    <i class="glyph-icon icon-linkedin" style="color: rgb(66, 66, 175);"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <link rel="stylesheet" type="text/css"
+                    href="{{ pathSite }}design/1/assets/widgets/owlcarousel/owlcarousel.css" />
+                <script type="text/javascript"
+                    src="{{ pathSite }}design/1/assets/widgets/owlcarousel/owlcarousel.js"></script>
+                <script type="text/javascript"
+                    src="{{ pathSite }}design/1/assets/widgets/owlcarousel/owlcarousel-demo.js"></script>
+
+
+                <div class="row" style="position:relative">
+                    <div class="col-md-12" style="background-color: white;">
+                        <ul>
+                            <input id="search" type="search" name="Busqueda" placeholder="Buscar productos">
+                                     <a class="items-center">
+                                        <input type="submit" value="Buscar" class="mb-sm btn btn-success">     
+                                
+                                <span><a href="#tab{{value.id}}" aria-current="page">
+                                        <span  class="uppercase font-normal relative">
+                                         <input type="submit" value="🏷️Ofertas" name="Ofertas" class="mb-sm btn btn-success"> 
+                                        
+                                        <span><a  href="#tab{{value.id}}" aria-current="page" >
+                                    <span  class="uppercase font-normal relative">
+                                        <input type="submit" value="Frutas" name="Frutas" class="mb-sm btn btn-success"> 
+                                    
+                                <span><a  href="#tab{{value.id}}" aria-current="page" >
+                                    <span  class="uppercase font-normal relative">
+                                        <input type="submit" value="Vegetales" name="Vegetales" class="mb-sm btn btn-success"> 
+                                    
+                                <span><a  href="#tab{{value.id}}" aria-current="page" >
+                                    <span  class="uppercase font-normal relative">
+                                        <input type="submit" value="Otros" name="Otros" class="mb-sm btn btn-success">   
+                                </a>
+                            </span>
+                        </ul> 
+                    </div>
+                </div>
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist" >
+
+                                {% set cc=0%} 
+                                {% for keyx, value in categorias %} 
+                                {% if cc == 0 %} 
+                                {% set active='active'%} 
+                                {% set cc=1%} 
+                                {% endif %}
+                                <a class="nav-item nav-link {{active}}" id="nav-{{value.id}}-tab" data-toggle="tab" href="#nav-{{value.id}}" role="tab" aria-controls="nav-{{value.id}}" aria-selected="true">{{value.categoria}}</a> {% endfor %}
+                            </div>
+                        </nav>
+
+                        <ul class="nav nav-tabs" role="tablist">
+                            {% set cc=0%}
+                            {% for keyx, value in categorias %}
+                            {% set active=''%}
+                            {% if cc == 0 %}
+                            {% set active='active'%}
+                            {% set cc=1%}
+                            {% endif %}
+                            <li role="presentation" class="{{active}}"><a href="#tab{{value.id}}"
+                                    aria-controls="tab{{value.id}}" role="tab" data-toggle="tab">{{value.categoria}}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+
+                        <div class="col-md-9" style="border-radius: 5px; border: 1px solid black;">
+                            <div class="col-6 col-sm-6 col-xs-6 col-md-6 col-lg-3 panel-content">
+                                <div class="card ">
+                                    <div class="box">
+                                        <img src="{{pathSite}}includes/images/productos/dz.jpg"
+                                            class="imgCardd" alt="...">
+                                            <h5 class="card-title"><b>GFGSGDSGFS</b></h5>
+                                              <h6 class="card-title">SGGDFGFN F FSD</h6>
+                                                <p class="card-text">UTIYTYYYTR</p>
+</div>
+</div>
+
+
+</div></div></div></div>
+
+
+
+                            <div class="tab-content">
+                                {% set cc=0%}
+                                {% for keyx, value in categorias %}
+                                {% set active=''%}
+                                {% if cc == 0 %}
+                                {% set active=' active'%}
+                                {% set cc=1%}
+                                {% endif %}
+                                <div role="tabpanel" class="tab-pane {{active}}" id="tab{{value.id}}">
+                                    {% for key1, value1 in productos %} 
+                                    {% if value.id == value1.categoria_id %}
+                                    <div class="col-6 col-sm-6 col-xs-6 col-md-6 col-lg-3 panel-content">
+                                        <div class="card ">
+                                            <div class="box">
+                                                <img src="{{ getIMG('producto',value1.id,value1.url_imagen) }}"
+                                                    class="imgCardd" alt="...">
+                                            </div>
+                                            <div class="card-body ">
+                                                <h5 class="card-title"><b>{{value1.producto}}</b></h5>
+                                                <h6 class="card-title">{{value1.precio_venta}}</h6>
+                                                <p class="card-text">{{value1.descripcion}}</p>
+                                                <div class=" bg-white">
+                                                    <input id="quantity_{{value1.id}}"
+                                                        class="form-control touchspin-demo-4" type="text" value="1"
+                                                        name="quantity_{{value1.id}}">
+                                                    <br>
+                                                    <button class="btn btn-alt  btn-black addProducto"
+                                                        data-id="{{value1.id}}">
+                                                        <span>Agregar</span>
+                                                        <input id="quantity_7" class="form-control touchspin-demo-4" type="text" value="1" name="quantity_7" style="display: block;">
+                                                    </button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %} 
+                                    {% endfor %}
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+
+                            <h3>Pedido</h3>
+                            <div id="capaPedido">
+
+                            </div>
+                            <hr>
+                            <h3>Nombre</h3>
+                            <input type="text" class="form-control" name="txtName" id="txtName">
+                            <h3>Teléfono</h3>
+                            <input type="phone" class="form-control" name="txtPhone" id="txtPhone">
+                            <h3>Fecha entrega</h3>
+                            <input type="text" class="bootstrap-datepicker2 form-control" value="{{hoy}}"
+                                data-date-format="yyyy-mm-dd" name="txtFec" id="txtFec">
+                            <h3>Dirección</h3>
+                            <input type="phone" class="form-control" name="txtDireccion" id="txtDireccion">
+
+                            <h3>Nota</h3>
+                            <textarea class="form-control" row="3" name="txtNota" id="txtNota"></textarea>
+                            <hr>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'includesHome/footer.twig' %}
+<script>
+    $(".addProducto").click(function ()
+    {
+        var idProducto = $(this).attr("data-id");
+        var actionS = "add";
+        pedido(idProducto, actionS);
+    });
+
+    function pedido(idProducto, actionS)
+    {
+        var cantidad = $("#quantity_" + idProducto).val();
+        var path = $("#path").val();
+        var idEmpresa = $("#idEmpresa").val();
+        var name = $("#txtName").val();
+        var tel = $("#txtPhone").val();
+        var fec = $("#txtFec").val();
+        var dir = $("#txtDireccion").val();
+        var nota = $("#txtNota").val();
+
+        var data = "idp=" + idProducto + "&can=" + cantidad + "&ide=" + idEmpresa + "&na=" + name + "&tel=" + tel + "&fec=" + fec + "&dir=" + dir + "&acti=" + actionS + "&not=" + nota;
+        var html = $.ajax({
+            url: path + "includes/ajax/addPedido.php",
+            type: "POST",
+            data: data,
+            async: false
+        }).responseText;
+        $('#capaPedido').html(html);
+    }
+    pedido(0, "");
+</script>
