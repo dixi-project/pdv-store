@@ -22,7 +22,7 @@ class ControllerIndex extends Controller {
         //asort($this->data["categorias"]);
         //var_dump($this->data["categorias"] );
         $this->data["productos"] = indexModel::bd($this->conf)->getDominioID("producto",$vv);
-       //var_dump($this->data["productos"]);
+
         $this->data["unidades"] = indexModel::bd($this->conf)->getDominioID("unidad_medida");
         $template="plantilla1.html";
          
