@@ -209,10 +209,11 @@
                     <div class="footer_logo">
                         <a href="index.html"><img src="{{ pathSite }}design/{{ design }}/assets/img/logo/logo.png" alt=""></a>
                     </div>
-                    <p class="footer_desc">We are a team of designers and developers that create high quality eCommerce, WordPress, Shopify .</p>
-                        <p><span>Address:</span> 4710-4890 Breckinridge USA</p>
-                        <p><span>Email:</span> <a href="#">demo@hasthemes.com</a></p>
-                        <p><span>Call us:</span> <a href="tel:(08)23456789">(08) 23 456 789</a> </p>
+                    <p class="footer_desc">
+                        <p><span>Business: </span> {{empresa.empresa}}</p>
+                        <p><span>Address: </span> {{empresa.direcccion}}</p>
+                        <p><span>Email: </span> {{empresa.correo}}</p>
+                        <p><span>Call us: </span>  {{empresa.telefono}}</p>
                     </div>          
                 </div>
                 <!--Description  Company end-->
@@ -418,9 +419,7 @@
                                                   </div>
                                                   <figcaption class="product_content">
                                                       <h4 class="product_name">
-                                                          <a href="#" data-tippy="Detalles Producto" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box">
-
-                                                          {{value1.producto}}</a></h4>
+                                                          <a href="#" data-tippy="Detalles Producto" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box"> {{value1.producto}}</a></h4>
                                                       <p>{{value.categoria}}</p>
                                                       <div class="price_box"> 
                                                           <span class="current_price">${{value1.precio_venta}}</span>
@@ -504,7 +503,210 @@
     </section>
     <!--slider area end-->
     
-  
+         <!--product area start-->
+    <div class="product_area  mb-64">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="product_header">
+                        <div class="section_title">
+                           <p>Recently added our store</p>
+                           <h2>Trending Products</h2>
+                        </div>
+                        <div class="product_tab_btn">
+                            <ul class="nav" role="tablist" id="nav-tab">
+                                <li>
+                                    <a class="active" data-toggle="tab" href="#plant1" role="tab" aria-controls="plant1" aria-selected="true"> 
+                                       Vegetables
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-toggle="tab" href="#plant2" role="tab" aria-controls="plant2" aria-selected="false">
+                                        Fruits
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-toggle="tab" href="#plant3" role="tab" aria-controls="plant3" aria-selected="false">
+                                        Salads
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="product_container">  
+               <div class="row">
+                   <div class="col-12">
+                        <div class="tab-content">
+                            {% set cc=0%}
+                            {% for keyx, value in categorias %}
+                            {% set active=''%}
+                            {% if cc == 0 %}
+                            {% set active=' active'%}
+                            {% set cc=2%}
+                            {% endif %}
+
+                            <div class="tab-pane fade " id="plant1" role="tabpanel">
+                                <div class="product_carousel product_column5 owl-carousel">
+                                    
+                                {% if value.id == value2.categoria_id %}
+                                    <ul>
+                                          {% for key2, value2 in pro %} 
+                                               <li> {{ key2 }} </li>
+                                    <div class="product_items">
+                                        <article class="single_product">
+                                            <figure>
+                                                <div class="product_thumb">
+                                                    <a class="primary_img" href="#" data-tippy="Detalles Producto" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box">
+                                                        <img src="{{ pathSite }}design/{{ design }}/assets/img/product/product1.jpg" alt="">
+                                                      </a>
+
+                                                    <a class="secondary_img" href="#" data-tippy="Detalles Producto" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box">
+                                                        <img src="{{ pathSite }}design/{{ design }}/assets/img/product/product2.jpg" alt="">
+                                                      </a>
+                                                    <div class="label_product">
+                                                        <span class="label_sale">Sale -->{{ key2 }}</span>
+                                                        <span class="label_new">New</span>
+                                                    </div>
+                                                    <div class="action_links">
+                                                        <ul>
+                                                            <li class="add_to_cart"><a href="javascript:void(0)" onclick="Pedido('{{value2.id}}',1,'add')" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span class="lnr lnr-cart"></span></a></li>
+                                                            <li class="quick_button"><a href="#" onclick="viewProduct('{{value2.id}}','{{value2.producto}}','{{value2.precio_venta}}','{{value2.descripcion}}')" data-tippy="Detalles Producto" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span class="lnr lnr-magnifier"></span></a></li>
+                                                            <li class="wishlist"><a href="wishlist.html" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span class="lnr lnr-heart"></span></a></li>  
+                                                            <li class="compare"><a href="#" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span class="lnr lnr-sync"></span></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <figcaption class="product_content">
+                                                    <h4 class="product_name">
+                                                        <a href="#" data-tippy="Detalles Producto" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box">{{value2.pro}}</a></h4>
+                                                    <p>{{value.categoria}}</p>
+                                                    <div class="price_box"> 
+                                                        <span class="current_price">${{value2.precio_venta}}</span>
+                                                        <span class="old_price">$362.00</span>
+                                                    </div>
+                                                </figcaption>
+                                            </figure>
+                                        </article>
+                                    </div>
+                                    
+                                  {% endfor %} 
+                                </ul>
+                                {% endif %} 
+                                </div>  
+                            </div>
+                            <div class="tab-pane fade" id="plant2" role="tabpanel">
+                                <div class="product_carousel product_column5 owl-carousel">
+                                    
+                                    {% if value.id == value3.categoria_id %}
+                                    <ul>
+                                          {% for key3, value3 in produc %} 
+                                               <li> {{ key3 }} </li>
+                                    <div class="product_items">
+                                        <article class="single_product">
+                                            <figure>
+                                                <div class="product_thumb">
+                                                    <a class="primary_img" href="#" data-tippy="Detalles Producto" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box">
+                                                        <img src="{{ pathSite }}design/{{ design }}/assets/img/product/product1.jpg" alt="">
+                                                      </a>
+
+                                                    <a class="secondary_img" href="#" data-tippy="Detalles Producto" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box">
+                                                        <img src="{{ pathSite }}design/{{ design }}/assets/img/product/product2.jpg" alt="">
+                                                      </a>
+                                                    <div class="label_product">
+                                                        <span class="label_sale">Sale -->{{ key3 }}</span>
+                                                        <span class="label_new">New</span>
+                                                    </div>
+                                                    <div class="action_links">
+                                                        <ul>
+                                                            <li class="add_to_cart"><a href="javascript:void(0)" onclick="Pedido('{{value3.id}}',1,'add')" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span class="lnr lnr-cart"></span></a></li>
+                                                            <li class="quick_button"><a href="#" onclick="viewProduct('{{value3.id}}','{{value3.producto}}','{{value3.precio_venta}}','{{value3.descripcion}}')" data-tippy="Detalles Producto" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span class="lnr lnr-magnifier"></span></a></li>
+                                                            <li class="wishlist"><a href="wishlist.html" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span class="lnr lnr-heart"></span></a></li>  
+                                                            <li class="compare"><a href="#" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span class="lnr lnr-sync"></span></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <figcaption class="product_content">
+                                                    <h4 class="product_name" href="#" data-tippy="Detalles Producto" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box">{{value3.produc}}</a></h4>
+                                                    <p>{{value.categoria}}</p>
+                                                    <div class="price_box"> 
+                                                        <span class="current_price">${{value3.precio_venta}}</span>
+                                                        <span class="old_price">$362.00</span>
+                                                    </div>
+                                                </figcaption>
+                                            </figure>
+                                        </article>
+                                    </div>
+                                    
+                                  {% endfor %} 
+                                </ul>
+                                {% endif %} 
+                                </div>  
+                            </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="tab-pane fade " id="plant3" role="tabpanel">
+                                <div class="product_carousel product_column5 owl-carousel">
+                                    {% if value.id == value4.categoria %}
+                                    <ul>
+                                          {% for key4, value4 in product %} 
+                                               <li> {{key4}} </li>
+                                    <div class="product_items">
+                                        <article class="single_product">
+                                            <figure>
+                                                <div class="product_thumb">
+                                                    <a class="primary_img" href="#" data-tippy="Detalles Producto" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box">
+                                                        <img src="{{ pathSite }}design/{{ design }}/assets/img/product/product1.jpg" alt="">
+                                                      </a>
+
+                                                    <a class="secondary_img" href="#" data-tippy="Detalles Producto" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box">
+                                                        <img src="{{ pathSite }}design/{{ design }}/assets/img/product/product2.jpg" alt="">
+                                                      </a>
+                                                    <div class="label_product">
+                                                        <span class="label_sale">Sale -->{{ key4 }}</span>
+                                                        <span class="label_new">New</span>
+                                                    </div>
+                                                    <div class="action_links">
+                                                        <ul>
+                                                            <li class="add_to_cart"><a href="javascript:void(0)" onclick="Pedido('{{value4.id}}',1,'add')" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span class="lnr lnr-cart"></span></a></li>
+                                                            <li class="quick_button"><a href="#" onclick="viewProduct('{{value4.id}}','{{value4.producto}}','{{value4.precio_venta}}','{{value4.descripcion}}')" data-tippy="Detalles Producto" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span class="lnr lnr-magnifier"></span></a></li>
+                                                            <li class="wishlist"><a href="wishlist.html" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span class="lnr lnr-heart"></span></a></li>  
+                                                            <li class="compare"><a href="#" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span class="lnr lnr-sync"></span></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <figcaption class="product_content">
+                                                    <h4 class="product_name">
+                                                        <a href="#" data-tippy="Detalles Producto" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box">{{value4.porcent}}</a></h4>
+                                                    <p>{{value.categoria}}</p>
+                                                    <div class="price_box"> 
+                                                        <span class="current_price">${{value4.precio_venta}}</span>
+                                                        <span class="old_price">$362.00</span>
+                                                    </div>
+                                                </figcaption>
+                                            </figure>
+                                        </article>
+                                    </div>
+                                    
+                                  {% endfor %} 
+                                </ul>
+                                {% endif %} 
+                                </div>  
+                            </div>
+                        {% endfor %} 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>        
+            </div>   
+        </div> 
+    </div>
+    <!--product area end-->
+
     <!--product area start-->
     <div class="product_area mb-65">
         <div class="container">
