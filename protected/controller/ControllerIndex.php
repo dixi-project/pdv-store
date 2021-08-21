@@ -41,9 +41,6 @@ class ControllerIndex extends Controller {
             closedir($handler);
         }
 
-        
-
-
 
         }else{
             echo "Url erronea";
