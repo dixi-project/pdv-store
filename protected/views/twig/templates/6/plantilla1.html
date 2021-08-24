@@ -144,8 +144,8 @@
                     </div>
                 </div>
             </div>
+            
             <div class="header_middle">
-                
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-2 col-md-3 col-sm-3 col-3">
@@ -181,151 +181,120 @@
                                 </div>
                             </div>
                         </div>
-                       
                     </div>
                 </div>
             </div>
-           
         </div> 
     </header>
     <!--header area end-->
+
+
     <section class="slider_section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-12 col-sm-6">
                     <div class="widgets_container contact_us">
-                    <div class="footer_logo">
+                    <div class="footer_logo ">
                         {% set cont = id_imagenempresa[idEmpresa]|length %}
                         {% if cont > 0 %}
                             {% for key2,  value2 in id_imagenempresa[idEmpresa] %}
-                            <img src="{{ pathSite }}includes/images/empresa/{{value2.image}}" alt="LOGO" width="200px" />
+                            <img src="{{ pathSite }}includes/images/empresa/{{value2.image}}" alt="LOGO" width="150px" />
                             {% endfor %}
 
                         {% else %}
-                         <img src="{{ pathSite }}includes/images/empresa/default.png" alt="LOGO" width="200px" />
+                         <img src="{{ pathSite }}includes/images/empresa/default.png" alt="LOGO" width="150px" />
                         {% endif%}
                     </div>
-                    <h2 style="font-family: Arial, Helvetica, sans-serif" ><p class="footer_desc">
+                    <h3 style="font-family: Lucida Bright" ><p class="footer_desc">
                         <p><span>Business: </span> {{empresa.empresa}}</p>
                         <p><span>Address: </span> {{empresa.direcccion}}</p>
                         <p><span>Email: </span> {{empresa.correo}}</p>
                         <p><span>Call us: </span>  {{empresa.telefono}}</p>
-                    </p></h2>
+                    </p></h3>
                     </div>          
                 </div>
                 <!--Description  Company end-->
                
                 <div class="col-lg-8">
                     <div class="slider_area owl-carousel">
-                        <div class="single_slider d-flex align-items-center" data-bgimg="{{ pathSite }}design/{{ design }}/assets/img/slider/frutverd.jpg" style="border: 10px solid; color: green;" alt="image" width="770px" height="1920px">
+                        <div class="single_slider d-flex align-items-center" data-bgimg="{{ pathSite }}design/{{ design }}/assets/img/slider/fondo1.jpg" alt="image" width="770px" height="1920px">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="slider_content">
-                                            <strong><FONT COLOR="white"><h1 style="font-family: Lucida Bright; text-shadow:  -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black">Gran venta de verduras</h1>
-                                            <strong><h3 style="font-family: Lucida Bright; text-shadow:  -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black">Productos agrícolas frescos</strong></h3>
-                                            <h3 style="font-family: Lucida Bright; text-shadow:  -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black">
-                                                10% de mezcla orgánica certificada de verduras. ¡Perfecto para cocinar y picar semanalmente!
-                                            </h3></FONT></strong> 
-                                            <a href="shop.html">Read more </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="single_slider d-flex align-items-center" data-bgimg="{{ pathSite }}design/{{ design }}/assets/img/slider/fruta2.png" style="border: 10px solid; color: green;" alt="image" width="770px" height="1920px">
+                        <div class="single_slider d-flex align-items-center" data-bgimg="{{ pathSite }}design/{{ design }}/assets/img/slider/paisaje.jpg" alt="image" width="770px" height="1920px">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <div class="slider_content">
-                                            <strong><FONT COLOR="white"><h1 style="font-family: Lucida Bright; text-shadow:  -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black">Frutas frescas</h1>
-                                            <strong><h2 style="font-family: Lucida Bright; text-shadow:  -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black">Productos agrícolas naturales</h2></strong>
-                                            <h3 style="font-family: Lucida Bright; text-shadow:  -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black">
-                                                Las frutas orgánicas naturales fortalecen su salud y bienestar.
-                                            </h3></FONT></strong> 
-                                            <a href="shop.html">Read more </a>
+                                        <div class="slider_content">    
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="single_slider d-flex align-items-center" data-bgimg="{{ pathSite }}design/{{ design }}/assets/img/slider/futver.jpg" style="border: 10px solid; color: green;" alt="image" width="770px" height="1920px">
+                        <div class="single_slider d-flex align-items-center" data-bgimg="{{ pathSite }}design/{{ design }}/assets/img/slider/naranja.jpg" alt="image" width="770px" height="1920px">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="slider_content">
-                                            <strong><FONT COLOR="white"><h1 style="font-family: Lucida Bright; text-shadow:  -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black">Frutas y Verduras frescos</h1>
-                                            <strong><h2 style="font-family: Lucida Bright; text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black">Productos agrícolas naturales</h2></strong>
-                                            <h2 style="font-family: Lucida Bright; text-shadow:  -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black">
-                                                La más amplia gama de verduras, frutas y productos de temporada frescos de la granja.
-                                            </h2></FONT></strong> 
-                                            <a href="shop.html">Read more </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>                
                 </div>
-                <!--slider area end-->
+                
             </div>
         </div>
-        <div class="shipping_area">
-            <div class="container bg">
+        <!--slider area end-->
+        <div class="shipping_area text_full">
+            <div class="container bg ">
                 <div class="row">
                     <div class="col-lg-3 col-md-5">
                         <div class="single_shipping">
-                            <div class="image">
-                                <img src="{{ pathSite }}design/{{ design }}/assets/img/about/envio.jpg" alt="image" width="500px" height="1900px">
+                            <div class="fa fa-truck fa-5x fa-lg fa-fw"></div>
                             </div>
                             <div class="shipping_content">
-                                <h3 style="font-family: Lucida Bright;">Envío gratis</h3>
-                                <h3 style="font-family: Lucida Bright;">EE.UU, México y Panamá apartir de $2500 de compra.</h3> 
+                                <h4 style="font-family: Lucida Bright;">Envío gratis</h4>
+                                <h4 style="font-family: Lucida Bright;">EE.UU, México y Panamá.</h4> 
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5">
+                     <div class="col-lg-3 col-md-5">
                         <div class="single_shipping col_2">
-                            <div class="image">
-                                <img src="{{ pathSite }}design/{{ design }}/assets/img/about/calidad.jpg" alt="image" width="1000px" height="1900px">
-                            </div>
-                            <div class="shipping_content">
-                                <h3 style="font-family: Lucida Bright;">Calidad</h3>
-                                <h3 style="font-family: Lucida Bright;">Nuestro compromiso con la calidad de cada producto que entregamos es el secreto de nuestor exito.</h3>
+                            <div class="fa fa-lemon-o fa-5x fa-lg fa-fw"></div>
+                        </div>
+                            <div class="shipping_content con">
+                                <h4 style="font-family: Lucida Bright;">Garantia de Calidad</h4>
+                                <h4 style="font-family: Lucida Bright;">Nuestros productos garantizados.</h4>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5">
+                    
+                     <div class="col-lg-3 col-md-5">
                         <div class="single_shipping col_3">
-                            <div class="image">
-                                <img src="{{ pathSite }}design/{{ design }}/assets/img/about/frescura.jpg" alt="image" width="500px" height="1900px">
-                            </div>
-                            <div class="shipping_content">
-                                <h3 style="font-family: Lucida Bright;">Frescura</h3>
-                                <h3 style="font-family: Lucida Bright;">La frescura en cada uno de nuestros productos es el compromiso con nuestros clientes</h3>
+                            <div class="fa fa-leaf fa-5x fa-lg fa-fw"></div>
+                        </div>
+                            <div class="shipping_content ">
+                                <h4 style="font-family: Lucida Bright;">100% Natural</h4>
+                                <h4 style="font-family: Lucida Bright;">Productos Agricola.</h4>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5">
-                        <div class="single_shipping col_4">
-                            <div class="image">
-                                <img src="{{ pathSite }}design/{{ design }}/assets/img/about/aceptamospagos.png" alt="image" width="1500px" height="1900px">
-                            </div>
-                            <div class="shipping_content">
-                                <h3 style="font-family: Lucida Bright;">Pagos 100% seguros</h3>
-                            <h3 style="font-family: Lucida Bright;">Garantizamos los pagos con tarjetas de crédito y débito.</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5">
-                        <div class="single_shipping col_5">
-                            <div class="image">
-                                <img src="{{ pathSite }}design/{{ design }}/assets/img/about/trans.jpg" alt="image" width="900px" height="1900px">
-                            </div>
-                            <div class="shipping_content">
-                                <h3 style="font-family: Lucida Bright;">Transporte</h3>
-                            <h3 style="font-family: Lucida Bright;">Para asegurar la frescura de nuestros productos, contamos con camionetas con sistema de refrigeración.</h3>
+                        <div class="col-lg-3 col-md-5">
+                            <div class="single_shipping col-lg-4">
+                                <div class="fa fa-cc-mastercard fa-5x fa-lg fa-fw"></div>
+                                <div class="fa fa-credit-card fa-5x fa-lg fa-fw"></div>
+                                <div class="fa fa-cc-paypal fa-5x fa-lg fa-fw"></div>
+
+                                </div>
+                                <div class="shipping_content ">
+                                <h4 style="font-family: Lucida Bright;">Pagos 100% seguros</h4>
+                                <h4 style="font-family: Lucida Bright;">Tarjetas de crédito, débito y visa.</h4>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -334,8 +303,8 @@
         </div>
 
           <!--shipping area end-->
-    </section>
-    
+     </section>
+     
    
     <!--product area start-->
     <div class="product_area  mb-64 mt-10">
