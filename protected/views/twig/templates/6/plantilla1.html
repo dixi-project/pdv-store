@@ -217,7 +217,7 @@
                
                 <div class="col-lg-8">
                     <div class="slider_area owl-carousel">
-                        <div class="single_slider d-flex align-items-center" data-bgimg="{{ pathSite }}design/{{ design }}/assets/img/slider/fondo1.jpg" alt="image" width="770px" height="1920px">
+                        <div class="single_slider d-flex align-items-center" data-bgimg="{{ pathSite }}design/{{ design }}/assets/img/slider/sencillo4.jpg" alt="image" width="770px" height="1920px">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -227,7 +227,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="single_slider d-flex align-items-center" data-bgimg="{{ pathSite }}design/{{ design }}/assets/img/slider/paisaje.jpg" alt="image" width="770px" height="1920px">
+                        <div class="single_slider d-flex align-items-center" data-bgimg="{{ pathSite }}design/{{ design }}/assets/img/slider/sencillo2.jpg" alt="image" width="770px" height="1920px">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -237,7 +237,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="single_slider d-flex align-items-center" data-bgimg="{{ pathSite }}design/{{ design }}/assets/img/slider/naranja.jpg" alt="image" width="770px" height="1920px">
+                        <div class="single_slider d-flex align-items-center" data-bgimg="{{ pathSite }}design/{{ design }}/assets/img/slider/sencillo3.jpg" alt="image" width="770px" height="1920px">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -253,47 +253,47 @@
             </div>
         </div>
         <!--slider area end-->
-        <div class="shipping_area text_full">
+        <div class="shipping_area ">
             <div class="container bg ">
                 <div class="row">
                     <div class="col-lg-3 col-md-5">
                         <div class="single_shipping">
-                            <div class="fa fa-truck fa-5x fa-lg fa-fw"></div>
+                            <div class="fa fa-truck fa-3x fa-lg fa-fw"></div>
                             </div>
                             <div class="shipping_content">
-                                <h4 style="font-family: Lucida Bright;">Envío gratis</h4>
-                                <h4 style="font-family: Lucida Bright;">EE.UU, México y Panamá.</h4> 
+                                <h3 style="font-family: Lucida Bright;">Envío gratis</h3>
+                                <h3 style="font-family: Lucida Bright;">EE.UU, México y Panamá.</h3> 
                             </div>
                         </div>
                      <div class="col-lg-3 col-md-5">
                         <div class="single_shipping col_2">
-                            <div class="fa fa-lemon-o fa-5x fa-lg fa-fw"></div>
+                            <div class="fa fa-lemon-o fa-3x fa-lg fa-fw"></div>
                         </div>
                             <div class="shipping_content con">
-                                <h4 style="font-family: Lucida Bright;">Garantia de Calidad</h4>
-                                <h4 style="font-family: Lucida Bright;">Nuestros productos garantizados.</h4>
+                                <h3 style="font-family: Lucida Bright;">Garantia de Calidad</h3>
+                                <h3 style="font-family: Lucida Bright;">Nuestros productos garantizados.</h3>
                             </div>
                         </div>
                     
                      <div class="col-lg-3 col-md-5">
                         <div class="single_shipping col_3">
-                            <div class="fa fa-leaf fa-5x fa-lg fa-fw"></div>
+                            <div class="fa fa-leaf fa-3x fa-lg fa-fw"></div>
                         </div>
                             <div class="shipping_content ">
-                                <h4 style="font-family: Lucida Bright;">100% Natural</h4>
-                                <h4 style="font-family: Lucida Bright;">Productos Agricola.</h4>
+                                <h3 style="font-family: Lucida Bright;">100% Natural</h3>
+                                <h3 style="font-family: Lucida Bright;">Productos Agricola.</h3>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-5">
                             <div class="single_shipping col-lg-4">
-                                <div class="fa fa-cc-mastercard fa-5x fa-lg fa-fw"></div>
-                                <div class="fa fa-credit-card fa-5x fa-lg fa-fw"></div>
-                                <div class="fa fa-cc-paypal fa-5x fa-lg fa-fw"></div>
+                                <div class="fa fa-cc-mastercard fa-3x fa-lg fa-fw"></div>
+                                <div class="fa fa-credit-card fa-3x fa-lg fa-fw"></div>
+                                <div class="fa fa-cc-paypal fa-3x fa-lg fa-fw"></div>
 
                                 </div>
                                 <div class="shipping_content ">
-                                <h4 style="font-family: Lucida Bright;">Pagos 100% seguros</h4>
-                                <h4 style="font-family: Lucida Bright;">Tarjetas de crédito, débito y visa.</h4>
+                                <h3 style="font-family: Lucida Bright;">Pagos 100% seguros</h3>
+                                <h3 style="font-family: Lucida Bright;">Tarjetas de crédito, débito y visa.</h3>
                                 </div>
                             </div>
                         </div>
@@ -362,23 +362,13 @@
                                             {% if value.id == value1.categoria_id %}
                                               
                                                 <div class="product_items">
-                                                    {% for key1, value2 in productos %} 
-                                                         {% if value2.id == value2.categoria_id %}
-                                                            
-                                                            <article class="single_product">
+                                                        {% for key2, value2 in categoria_id%} 
+                                                            {% if value2.id == value2.categoria_id %}
+                                                             <article class="single_product">
                                                                 <figure>
-                                                                    <div>
-                                                                       <div class="product_thumb">
-                                                                        {% set cont = id_imagenproducto[idProducto]|length %}
-                                                                        {% if cont > 0 %}
-                                                                             {% for key3,  value3 in id_imagenproducto[idProducto] %}
-                                                                        <a class="primary_img" href="product-details.html"><img src="{{ pathSite }}includes/images/productos/{{value3.image}}" alt=""></a>
-                                                                        <a class="secondary_img" href="product-details.html"><img src="{{ pathSite }}includes/images/productos/{{value3.image}}" alt=""></a>
-                                                                             {% endfor %}
-                                                                        </div>
-                                                                        {% else %}
-                                                                        <img src="{{ pathSite }}includes/images/productos/default.jpg" alt="image" width="200px" />
-                                                                        {% endif%}
+                                                                    <div class="product_thumb">
+                                                                        <a class="primary_img" href="product-details.html"><img src="{{ pathSite }}design/{{ design }}/assets/img/product/product3.jpg" alt=""></a>
+                                                                        <a class="secondary_img" href="product-details.html"><img src="{{ pathSite }}design/{{ design }}/assets/img/product/product4.jpg" alt=""></a>
                                                                         <div class="label_product">
                                                                             <span class="label_sale">Sale</span>
                                                                             <span class="label_new">New</span>
@@ -386,8 +376,8 @@
                                                                         <div class="action_links">
                                                                             <ul>
                                                                                 <li class="add_to_cart"><a href="cart.html" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span class="lnr lnr-cart"></span></a></li>
-                                                                                <li class="quick_button"><a href="#" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span class="lnr lnr-magnifier"></span></a></li>
-                                                                                <li class="wishlist"><a href="wishlist.html" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span class="lnr lnr-heart"></span></a></li>  
+                                                                               <li class="quick_button"><a href="#" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span class="lnr lnr-magnifier"></span></a></li>
+                                                                                 <li class="wishlist"><a href="wishlist.html" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span class="lnr lnr-heart"></span></a></li> 
                                                                                 <li class="compare"><a href="#" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span class="lnr lnr-sync"></span></a></li>
                                                                             </ul>
                                                                         </div>
@@ -397,12 +387,12 @@
                                                                         <p><a href="#">{{value.categoria}}</a></p>
                                                                         <div class="price_box"> 
                                                                             <span class="current_price">${{value1.precio_venta}}</span>
-                                                                            <span class="old_price">$362.00</span>
+                                                                            <span class="old_price">$382.00</span>
                                                                         </div>
                                                                     </figcaption>
                                                                 </figure>
-                                                            </article>
-                                                            {% endif %}
+                                                             </article>
+                                                             {% endif %}
                                                         {% endfor %}
                                                     </div> 
                                             {% endif %}
