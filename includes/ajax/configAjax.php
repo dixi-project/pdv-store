@@ -8,6 +8,7 @@ $config=dirname(__FILE__).'/../../protected/config/data.php';
 $conf = require($config);
 require dirname(__FILE__).'/../../'.$conf['folderModelos'].'SPDO.php';
 $db = SPDO::singleton($conf['host'],$conf['dbname'],$conf['username'],$conf['password']);
+$design = $conf['design'];
 $pathSitioCMS = $conf['pathCMSSite'];
 $pathSite = $conf['pathSite'];
 function Security($_Cadena) {
